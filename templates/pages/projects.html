@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ seo_title }}</title>
+    <meta name="description" content="{{ seo_description }}">
+    <meta name="keywords" content="{{ seo_keywords }}">
+    <meta name="author" content="گروه بینوکس">
+    <meta name="theme-color" content="#010206">
+    <meta name="robots" content="{{ seo_robots }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="fa-IR" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
+    <meta property="og:type" content="{{ og_type }}">
+    <meta property="og:site_name" content="بینوکس | Binux">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:title" content="{{ seo_title }}">
+    <meta property="og:description" content="{{ seo_description }}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:alt" content="بینوکس | Binux">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo_title }}">
+    <meta name="twitter:description" content="{{ seo_description }}">
+    <meta name="twitter:image" content="{{ og_image }}">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            dark: 'var(--bg-dark)',
+                            card: 'var(--bg-card)',
+                            textPrimary: 'var(--text-primary)',
+                            textSecondary: 'var(--text-secondary)',
+                            accent: '#10B981',
+                            neonBlue: '#3B82F6',
+                            purple: '#8B5CF6'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --bg-dark: #010206;
+            --bg-card: #060913;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+        }
+        :root.light {
+            --bg-dark: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+        }
+        .dot-grid {
+            background-size: 32px 32px;
+            background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle, black 40%, transparent 95%);
+            -webkit-mask-image: radial-gradient(circle, black 40%, transparent 95%);
+        }
+        :root.light .dot-grid { background-image: radial-gradient(circle, rgba(15,23,42,.04) 1px, transparent 1px); }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-textPrimary font-sans min-h-screen relative overflow-x-hidden transition-colors duration-500">
+    <div class="absolute inset-0 dot-grid pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 border-b border-slate-900/60 bg-brand-dark/75 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+            <a href="{% url 'pages:home' %}#gallery" class="flex items-center gap-3" aria-label="بازگشت به پروژه‌های انجام شده">
+                <div class="w-10 h-10 rounded-xl bg-brand-accent/10 border border-brand-accent/20 text-brand-accent flex items-center justify-center font-black">&lt;/&gt;</div>
+                <div>
+                    <div class="text-sm font-black">پروژه‌های انجام شده</div>
+                    <div class="text-[10px] text-slate-500">Binux Portfolio</div>
+                </div>
+            </a>
+            <div class="flex items-center gap-2">
+                <button type="button" onclick="toggleProjectsTheme()" class="w-10 h-10 rounded-xl border border-slate-800 bg-brand-card/60 text-slate-400 hover:text-brand-accent transition-all" aria-label="تغییر تم">
+                    <span id="projects-theme-icon">☾</span>
+                </button>
+                <a href="{% url 'pages:home' %}#gallery" class="hidden sm:inline-flex items-center px-4 py-2.5 rounded-xl border border-slate-800 text-xs font-bold text-slate-300 hover:border-brand-accent/30 hover:text-brand-accent transition-all">بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 py-14 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <!-- Portfolio Intro -->
+            <div class="max-w-3xl mb-10 sm:mb-14">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-accent/20 bg-brand-accent/5 text-[10px] text-brand-accent font-semibold mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
+                    Selected Work
+                </div>
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.2]">پروژه‌هایی که با دقت مهندسی شده‌اند</h1>
+                <p class="mt-5 text-sm sm:text-base leading-8 text-brand-textSecondary max-w-2xl">
+                    مجموعه‌ای از پروژه‌های نرم‌افزاری بینوکس؛ از سامانه‌های سازمانی و CRM تا وب‌اپلیکیشن و زیرساخت. هر پروژه یک داستان فنی و یک مسئله واقعی برای حل کردن دارد.
+                </p>
+            </div>
+
+            {% if projects %}
+                <!-- Featured Project -->
+                {% with project=projects.0 %}
+                <a href="{% url 'pages:project_detail' project.slug %}"
+                        data-project-slug="{{ project.slug }}"
+                        onclick="event.preventDefault(); openProjectModal('{{ project.slug }}')"
+                        class="no-underline group relative block w-full text-right overflow-hidden rounded-[2rem] border border-slate-900/80 bg-slate-950/40 hover:border-brand-accent/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_rgba(0,0,0,0.32)]">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] min-h-[480px]">
+                        <div class="relative min-h-[280px] lg:min-h-full overflow-hidden bg-brand-dark">
+                            {% if project.cover_image %}
+                                <img decoding="async" src="{{ project.cover_image.url }}"
+                                     alt="{{ project.title }}"
+                                     loading="eager"
+                                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.045]">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                                <div class="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-transparent lg:bg-gradient-to-l"></div>
+                            {% else %}
+                                <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-card">
+                                    <div class="absolute inset-0 opacity-50" style="background-image: linear-gradient(rgba(16,185,129,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,.06) 1px, transparent 1px); background-size: 28px 28px;"></div>
+                                    <div class="relative h-full flex items-center justify-center p-8">
+                                        <div class="text-center">
+                                            <div class="text-[10px] font-mono tracking-[0.25em] text-brand-accent mb-3">[// FEATURED PROJECT]</div>
+                                            <div class="text-2xl sm:text-4xl font-black text-slate-100">{{ project.title }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="absolute top-5 left-5 z-10 flex items-center gap-2">
+                                <span class="px-2.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[8px] font-mono tracking-widest text-slate-300">FEATURED</span>
+                                <span class="px-2.5 py-1.5 rounded-full bg-brand-accent/10 backdrop-blur-md border border-brand-accent/20 text-[8px] font-mono text-brand-accent">01</span>
+                            </div>
+
+                            <div class="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between gap-4">
+                                <div>
+                                    <div class="text-[10px] text-brand-accent font-semibold mb-1">{{ project.category }}</div>
+                                    <div class="text-xl sm:text-3xl font-black text-white">{{ project.title }}</div>
+                                </div>
+                                <span class="hidden sm:inline-flex w-11 h-11 rounded-full border border-white/15 bg-black/20 backdrop-blur-md items-center justify-center text-white group-hover:bg-brand-accent group-hover:text-brand-dark group-hover:border-brand-accent transition-all duration-300">
+                                    ←
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-brand-card/65">
+                            <div>
+                                <div class="flex items-center justify-between gap-4">
+                                    <span class="text-[9px] font-mono tracking-[0.2em] text-slate-500">CASE STUDY / 01</span>
+                                    <span class="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_14px_rgba(16,185,129,.6)]"></span>
+                                </div>
+                                <h2 class="mt-8 text-2xl sm:text-3xl font-black text-brand-textPrimary leading-[1.35]">{{ project.title }}</h2>
+                                <p class="mt-4 text-sm leading-8 text-brand-textSecondary">{{ project.short_description }}</p>
+                            </div>
+
+                            <div class="mt-10">
+                                <div class="text-[9px] font-mono tracking-[0.2em] text-slate-500 mb-3">TECH STACK</div>
+                                <div class="flex flex-wrap gap-2">
+                                    {% for tech in project.technology_list|slice:":6" %}
+                                        <span class="px-2.5 py-1.5 rounded-lg bg-black/15 border border-slate-800 text-[9px] text-slate-400 font-mono">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="mt-7 pt-5 border-t border-slate-900 flex items-center justify-between text-xs font-bold">
+                                    <span class="text-brand-accent group-hover:text-white transition-colors">مشاهده Case Study و آلبوم</span>
+                                    <span class="text-slate-600 group-hover:text-brand-accent transition-all duration-300 group-hover:-translate-x-1">←</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endwith %}
+
+                <!-- Supporting Projects -->
+                {% if projects|length > 1 %}
+                <div class="flex items-end justify-between gap-4 mt-14 mb-6">
+                    <div>
+                        <div class="text-[9px] font-mono tracking-[0.2em] text-slate-500">MORE WORK</div>
+                        <h2 class="mt-2 text-xl sm:text-2xl font-black text-brand-textPrimary">پروژه‌های دیگر</h2>
+                    </div>
+                    <div class="hidden sm:block text-[10px] text-slate-600">برای مشاهده جزئیات روی هر پروژه بزنید.</div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {% for project in projects %}
+                        {% if not forloop.first %}
+                        <a href="{% url 'pages:project_detail' project.slug %}"
+                                data-project-slug="{{ project.slug }}"
+                                onclick="event.preventDefault(); openProjectModal('{{ project.slug }}')"
+                                class="no-underline group block w-full text-right rounded-3xl border border-slate-900/70 bg-slate-950/30 hover:border-brand-accent/20 hover:-translate-y-1 hover:shadow-[0_18px_55px_rgba(0,0,0,0.22)] transition-all duration-400 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60">
+                            {% if project.cover_image %}
+                                <div class="relative h-48 overflow-hidden bg-brand-dark border-b border-slate-900">
+                                    <img decoding="async" src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+                                    <span class="absolute top-4 left-4 px-2 py-1 rounded-full bg-black/35 backdrop-blur-md border border-white/10 text-[8px] font-mono text-slate-300">0{{ forloop.counter }}</span>
+                                </div>
+                            {% else %}
+                                <div class="relative h-48 overflow-hidden bg-gradient-to-br from-brand-dark via-slate-900 to-brand-card border-b border-slate-900 flex items-center justify-center">
+                                    <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(rgba(16,185,129,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,.05) 1px, transparent 1px); background-size: 24px 24px;"></div>
+                                    <div class="relative text-center px-4">
+                                        <div class="text-[9px] font-mono tracking-widest text-brand-accent mb-2">[// {{ project.category|upper }}]</div>
+                                        <div class="text-base font-bold text-slate-200">{{ project.title }}</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="p-5 flex flex-col min-h-[190px]">
+                                <div class="text-[10px] text-brand-accent font-semibold">{{ project.category }}</div>
+                                <h3 class="mt-1 text-lg font-bold text-brand-textPrimary">{{ project.title }}</h3>
+                                <p class="mt-2 text-xs leading-6 text-brand-textSecondary line-clamp-2">{{ project.short_description }}</p>
+
+                                <div class="flex flex-wrap gap-1.5 mt-4">
+                                    {% for tech in project.technology_list|slice:":3" %}
+                                        <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[9px] text-slate-400 font-mono">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="mt-auto pt-5 flex items-center justify-between text-xs font-bold">
+                                    <span class="text-brand-accent group-hover:text-white transition-colors">مشاهده جزئیات</span>
+                                    <span class="text-slate-600 group-hover:text-brand-accent transition-all duration-300 group-hover:-translate-x-1">←</span>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% else %}
+                <div class="rounded-3xl border border-slate-900 p-10 text-center text-sm text-slate-500">پروژه‌ای برای نمایش ثبت نشده است.</div>
+            {% endif %}
+        </div>
+    </main>
+
+    {{ projects_payload|json_script:"portfolio-projects-data" }}
+    {% include "pages/partials/project_modal.html" %}
+    <script src="{% static 'js/projects.js' %}"></script>
+    <script type="application/ld+json">{{ itemlist_schema|safe }}</script>
+    <script type="application/ld+json">{{ breadcrumb_schema|safe }}</script>
+    <script>
+        function toggleProjectsTheme() {
+            document.documentElement.classList.toggle('light');
+            const light = document.documentElement.classList.contains('light');
+            localStorage.setItem('theme', light ? 'light' : 'dark');
+            document.getElementById('projects-theme-icon').textContent = light ? '☀' : '☾';
+        }
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light');
+            document.getElementById('projects-theme-icon').textContent = '☀';
+        }
+    </script>
+</body>
+</html>

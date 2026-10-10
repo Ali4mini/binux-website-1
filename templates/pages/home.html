@@ -1,69 +1,58 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" class="scroll-smooth">
+<html lang="fa-IR" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Meta Tags for SEO -->
     <title>{{ seo_title }}</title>
     <meta name="description" content="{{ seo_description }}">
     <meta name="keywords" content="{{ seo_keywords }}">
-    <meta name="robots" content="index, follow">
+    <meta name="author" content="گروه بینوکس">
+    <meta name="theme-color" content="#010206">
+    <meta name="robots" content="{{ seo_robots }}">
     <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="fa-IR" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
 
-    <!-- Open Graph (Social SEO) -->
+    <!-- Open Graph / Social SEO -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="بینوکس | Binux">
+    <meta property="og:locale" content="fa_IR">
     <meta property="og:url" content="{{ canonical_url }}">
     <meta property="og:title" content="{{ seo_title }}">
     <meta property="og:description" content="{{ seo_description }}">
-    <meta property="og:image" content="/static/images/og-share.jpg">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:alt" content="بینوکس | Binux">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo_title }}">
+    <meta name="twitter:description" content="{{ seo_description }}">
+    <meta name="twitter:image" content="{{ og_image }}">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
     <!-- Fonts: Premium Persian Typography -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 
-    <!-- Google Structured Data (JSON-LD Schema) for Advanced SEO Rich Snippets -->
+    <!-- Organization structured data -->
+    <script type="application/ld+json">{{ organization_schema|safe }}</script>
+    <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+
+    <!-- WebSite structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "آژانس دیجیتال بینوکس",
-      "alternateName": "Binux",
+      "@type": "WebSite",
+      "@id": "{{ canonical_url }}#website",
       "url": "{{ canonical_url }}",
-      "logo": "https://example.com/static/images/logo.png",
-      "image": "https://example.com/static/images/og-share.jpg",
+      "name": "بینوکس | Binux",
       "description": "{{ seo_description }}",
-      "telephone": "+989120000000",
-      "priceRange": "$$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "خیابان آزادی، پلاک ۱۰۰",
-        "addressLocality": "تهران",
-        "addressRegion": "تهران",
-        "postalCode": "1234567890",
-        "addressCountry": "IR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "35.6997",
-        "longitude": "51.3380"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Saturday",
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://github.com/binux",
-        "https://linkedin.com/company/binux"
-      ]
+      "publisher": {
+        "@id": "{{ canonical_url }}#organization"
+      }
     }
     </script>
 
@@ -202,7 +191,37 @@
             background: #10B981;
             border-radius: 2px;
         }
-    </style>
+    
+        /* Added premium motion layers — existing UI remains intact */
+        .binux-marquee-track {
+            width: max-content;
+            animation: binux-marquee 28s linear infinite;
+        }
+        @keyframes binux-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .service-demo-item {
+            transition: border-color 250ms ease, background-color 250ms ease, transform 250ms ease;
+        }
+        .service-demo-item.is-active {
+            border-color: rgba(16, 185, 129, 0.28);
+            background: rgba(16, 185, 129, 0.05);
+            transform: translateX(-2px);
+        }
+        .service-demo-panel {
+            transition: opacity 220ms ease, transform 220ms ease;
+        }
+        .service-demo-panel.is-swapping {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .binux-marquee-track { animation: none; }
+            .service-demo-panel,
+            .service-demo-item { transition: none; }
+        }
+</style>
 </head>
 <body class="bg-brand-dark text-brand-textPrimary font-sans min-h-screen flex flex-col justify-between relative overflow-x-hidden select-none transition-colors duration-500">
 
@@ -230,42 +249,33 @@
     <!-- Active Dot-Grid Background Overlay -->
     <div class="absolute inset-0 dot-grid pointer-events-none z-0"></div>
 
-    <!-- Header / Navbar (Futuristic Glassmorphism) -->
-    <header class="border-b border-slate-900/60 backdrop-blur-xl bg-brand-dark/40 sticky top-0 z-50 transition-colors duration-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            
-            <!-- Day/Night Theme Toggler & Eye-Catching CTA (Top Left) -->
-            <div class="flex items-center gap-3">
-                <button onclick="toggleTheme()" class="text-brand-textSecondary hover:text-brand-accent p-2 rounded-lg border border-slate-900/50 bg-brand-card/60 backdrop-blur-md focus:outline-none transition-all duration-300" aria-label="تغییر تم سایت">
+    <!-- Header / Navbar (Premium Minimal Glass) -->
+    <header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-brand-dark/25 backdrop-blur-lg transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between" dir="ltr">
+            <!-- Header Actions: Contact + Theme -->
+            <div class="flex items-center gap-2.5" dir="rtl">
+                <button onclick="toggleTheme()" class="text-brand-textSecondary hover:text-brand-accent p-2 rounded-lg border border-white/[0.06] bg-white/[0.02] backdrop-blur-md focus:outline-none transition-all duration-300 hover:border-brand-accent/20" aria-label="تغییر تم سایت">
                     <svg id="theme-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
                     <svg id="theme-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-
-                <!-- Highly Eye-Catching Pulsing Contact Button -->
-                <a href="tel:09120000000" class="relative px-5 py-2 sm:px-6 sm:py-2.5 rounded-lg border border-brand-accent bg-brand-dark hover:border-brand-accent text-slate-100 text-xs font-bold transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.35)] animate-pulse hover:animate-none group overflow-hidden">
-                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-brand-accent to-brand-neonBlue opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
+                <a href="tel:09120000000" class="relative px-5 py-2 sm:px-6 sm:py-2.5 rounded-lg border border-brand-accent/35 bg-brand-accent/[0.03] hover:bg-brand-accent hover:text-brand-dark text-slate-100 text-xs font-bold transition-all duration-300 overflow-hidden group">
                     <span class="relative z-10">ارتباط با ما</span>
                 </a>
             </div>
 
-            <!-- Custom Ordered Navigation Links (Desktop only) -->
-            <nav class="hidden xl:flex gap-6 lg:gap-8 text-xs font-semibold tracking-wider text-brand-textSecondary">
-                <a href="#" class="text-brand-accent border-b-2 border-brand-accent pb-1">صفحه اصلی</a>
-                <a href="#gallery" class="hover:text-brand-accent transition-all duration-200 hover:-translate-y-0.5">پروژه‌های انجام شده</a>
-                <a href="{% url 'pages:electronics' %}" class="hover:text-brand-accent transition-all duration-200 hover:-translate-y-0.5">بینوکس الکترونیک</a>
-                <a href="#simulator" class="hover:text-brand-accent transition-all duration-200 hover:-translate-y-0.5">آنالیز سرعت</a>
-                <a href="{% url 'pages:articles' %}" class="hover:text-brand-accent transition-all duration-200 hover:-translate-y-0.5">مقاله‌های تکنولوژی</a>
-                <a href="{% url 'pages:about' %}" class="hover:text-brand-accent transition-all duration-200 hover:-translate-y-0.5">درباره ما</a>
-                <a href="#" onclick="toggleTerminal()" class="text-brand-purple hover:text-brand-accent transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 bg-brand-purple rounded-full animate-ping"></span>
-                    کنسول بینوکس
-                </a>
+            <!-- Main Navigation -->
+            <nav class="hidden xl:flex items-center gap-1 text-xs font-semibold text-brand-textSecondary" dir="rtl">
+                <a href="#" class="px-3 py-2 rounded-lg bg-brand-accent/[0.08] text-brand-accent transition-all duration-200">صفحه اصلی</a>
+                <a href="{% url 'pages:projects' %}" class="px-3 py-2 rounded-lg hover:text-brand-accent hover:bg-white/[0.025] transition-all duration-200">پروژه‌های انجام شده</a>
+                <a href="{% url 'pages:electronics' %}" class="px-3 py-2 rounded-lg hover:text-brand-accent hover:bg-white/[0.025] transition-all duration-200">بینوکس الکترونیک</a>
+                <a href="{% url 'pages:articles' %}" class="px-3 py-2 rounded-lg hover:text-brand-accent hover:bg-white/[0.025] transition-all duration-200">مقاله‌های تکنولوژی</a>
+                <a href="{% url 'pages:about' %}" class="px-3 py-2 rounded-lg hover:text-brand-accent hover:bg-white/[0.025] transition-all duration-200">درباره ما</a>
             </nav>
 
-            <!-- Logo with dynamic fallback -->
-            <div class="flex items-center gap-3 relative group">
-                <div class="absolute -inset-2 bg-brand-neonBlue/10 rounded-full blur-xl group-hover:bg-brand-accent/20 transition-all duration-500"></div>
-                <img src="{% static 'images/logo.png' %}" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';" alt="بینوکس لوگو" class="h-8 sm:h-9 w-auto relative z-10 hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 relative group" dir="rtl">
+                <div class="absolute -inset-1.5 bg-brand-neonBlue/5 rounded-full blur-lg group-hover:bg-brand-accent/10 transition-all duration-500"></div>
+                <img decoding="async" src="{% static 'images/logo.png' %}" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';" alt="بینوکس لوگو" class="h-8 sm:h-9 w-auto relative z-10 hover:scale-[1.03] transition-transform duration-300">
                 
                 <div id="logo-fallback" class="hidden relative z-10 items-center gap-2 font-black text-xs sm:text-sm tracking-wider text-brand-textPrimary">
                     <span class="text-brand-accent">&lt;</span>BINUX<span class="text-brand-neonBlue">/&gt;</span>
@@ -273,7 +283,7 @@
             </div>
 
             <!-- Hamburger Button (Mobile Trigger) -->
-            <button onclick="toggleMobileMenu()" class="xl:hidden text-brand-textSecondary hover:text-brand-accent focus:outline-none z-50">
+            <button onclick="toggleMobileMenu()" class="xl:hidden text-brand-textSecondary hover:text-brand-accent focus:outline-none z-50 p-1 transition-colors">
                 <svg id="hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
@@ -284,15 +294,10 @@
         <div id="mobile-menu" class="hidden xl:hidden fixed inset-x-0 top-[65px] h-[calc(100vh-65px)] bg-brand-dark/98 backdrop-blur-2xl z-40 px-8 py-12 flex flex-col justify-start gap-8 text-center shadow-2xl transition-all duration-300 overflow-y-auto">
             <button onclick="toggleTheme(); toggleMobileMenu();" class="text-sm font-semibold text-brand-textSecondary hover:text-brand-accent flex justify-center items-center gap-2 py-3 border-b border-slate-900/40">تغییر تم سایت</button>
             <a href="#" onclick="toggleMobileMenu()" class="text-base font-bold text-brand-accent tracking-wide">صفحه اصلی</a>
-            <a href="#gallery" onclick="toggleMobileMenu()" class="text-base font-semibold text-brand-textSecondary hover:text-brand-accent transition-colors">پروژه‌های انجام شده</a>
+            <a href="{% url 'pages:projects' %}" onclick="toggleMobileMenu()" class="text-base font-semibold text-brand-textSecondary hover:text-brand-accent transition-colors">پروژه‌های انجام شده</a>
             <a href="{% url 'pages:electronics' %}" onclick="toggleMobileMenu()" class="text-base font-semibold text-brand-textSecondary hover:text-brand-accent transition-colors">بینوکس الکترونیک</a>
-            <a href="#simulator" onclick="toggleMobileMenu()" class="text-base font-semibold text-brand-textSecondary hover:text-brand-accent transition-colors">آنالیز سرعت</a>
             <a href="{% url 'pages:articles' %}" onclick="toggleMobileMenu()" class="text-base font-semibold text-brand-textSecondary hover:text-brand-accent transition-colors">مقاله‌های تکنولوژی</a>
             <a href="{% url 'pages:about' %}" onclick="toggleMobileMenu()" class="text-base font-semibold text-brand-textSecondary hover:text-brand-accent transition-colors">درباره ما</a>
-            <a href="#" onclick="toggleMobileMenu(); toggleTerminal();" class="text-base font-semibold text-brand-purple hover:text-brand-accent transition-colors flex items-center justify-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-purple rounded-full animate-ping"></span>
-                کنسول بینوکس
-            </a>
             <div class="pt-6 border-t border-slate-900/40">
                 <a href="tel:09120000000" class="block w-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent hover:bg-brand-accent hover:text-brand-dark py-3.5 rounded-xl text-xs font-bold transition-all duration-300">
                     ارتباط با ما
@@ -309,34 +314,20 @@
             <div class="space-y-5 text-center lg:text-right">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 text-brand-accent text-[10px] sm:text-[11px] font-semibold rounded-full border border-brand-accent/20">
                     <span class="w-1.5 h-1.5 bg-brand-accent rounded-full animate-ping"></span>
-                    <span>معماری آینده‌نگر بک‌اَند با جنگو</span>
+                    <span>راهکارهای نرم‌افزاری، از ایده تا اجرا</span>
                 </div>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-brand-textPrimary leading-tight md:leading-none tracking-tight">
-                    توسعه وب‌سایت‌های <br class="hidden sm:inline">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-cyan-400 to-brand-purple bg-[size:200%] animate-[text-gradient_6s_linear_infinite]">فوق‌پیشرفته و مدرن</span>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.25] tracking-[-0.015em] text-brand-textPrimary">
+                    <span class="block">مهندسی نرم‌افزار مقیاس‌پذیر</span>
+                    <span class="block mt-1 text-slate-300">
+                        برای کسب‌وکارهای مدرن
+                    </span>
                 </h1>
                 <p class="text-brand-textSecondary text-xs sm:text-sm md:text-base max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                    در آژانس دیجیتال بینوکس (Binux)، ما قالب‌های وب را به اپلیکیشن‌های زنده و پرسرعت تبدیل می‌کنیم. ترکیبی از مهندسی دیتابیس با انیمیشن‌های تعاملی و سئوی حداکثری.
+                    در بینوکس، نرم‌افزار را از ایده تا اجرا <a href="{% url 'pages:service_detail' 'software-development' %}" class="text-inherit hover:text-brand-accent transition-colors">توسعه می‌دهیم</a>؛ از طراحی و پیاده‌سازی <a href="{% url 'pages:service_detail' 'management-software' %}" class="text-inherit hover:text-brand-accent transition-colors">سیستم‌های مدیریتی و سازمانی</a> مانند <a href="{% url 'pages:service_detail' 'management-software' %}" class="text-inherit hover:text-brand-accent transition-colors">CRM، DMS و ERP</a> تا <a href="{% url 'pages:service_detail' 'app-development' %}" class="text-inherit hover:text-brand-accent transition-colors">ساخت اپلیکیشن</a> و <a href="{% url 'pages:service_detail' 'web-design' %}" class="text-inherit hover:text-brand-accent transition-colors">طراحی وب‌سایت‌های حرفه‌ای</a>. تیم فنی ما در تمام مسیر، از اولین مرحله تحلیل و طراحی تا توسعه، استقرار و پشتیبانی، همراه شماست.
                 </p>
                 
-                <!-- Live Core Engine Metrics Dashboard Visualizer -->
-                <div class="flex gap-6 items-center pt-2 text-[10px] font-mono text-slate-500 justify-center lg:justify-start">
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-ping"></span>
-                        <span>پینگ اتصال: <span id="metric-ping" class="text-brand-textPrimary font-bold">12ms</span></span>
-                    </div>
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-neonBlue"></span>
-                        <span>سرعت بارگذاری: <span class="text-brand-textPrimary font-bold">0.18s</span></span>
-                    </div>
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-purple"></span>
-                        <span>شاخص سئو گوگل: <span class="text-brand-accent font-bold">100/100</span></span>
-                    </div>
-                </div>
-
                 <div class="flex flex-col sm:flex-row gap-4 pt-3 justify-center lg:justify-start max-w-sm mx-auto sm:max-w-none">
-                    <a href="#gallery" class="relative group overflow-hidden bg-brand-accent text-brand-dark font-extrabold text-center px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl shadow-lg shadow-emerald-500/15 text-xs transition-all duration-300 hover:shadow-emerald-500/30 transform hover:-translate-y-1">
+                    <a href="{% url 'pages:projects' %}" class="relative group overflow-hidden bg-brand-accent text-brand-dark font-extrabold text-center px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl shadow-lg shadow-emerald-500/15 text-xs transition-all duration-300 hover:shadow-emerald-500/30 transform hover:-translate-y-1">
                         شروع ماجراجویی با بینوکس
                     </a>
                 </div>
@@ -377,179 +368,260 @@
         </div>
     </section>
 
+    <!-- Added Layer: Proof + Technology Strip -->
+    <section aria-label="نمای کلی بینوکس" class="relative z-10 border-y border-slate-900/70 bg-black/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-x-reverse divide-slate-900/70">
+                <div class="py-5 sm:py-6 px-4 text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-textPrimary" dir="ltr">{{ projects|length }}</div>
+                    <div class="mt-1 text-[9px] sm:text-[10px] text-slate-500">پروژه منتخب منتشرشده</div>
+                </div>
+                <div class="py-5 sm:py-6 px-4 text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-textPrimary" dir="ltr">04</div>
+                    <div class="mt-1 text-[9px] sm:text-[10px] text-slate-500">حوزه فنی اصلی</div>
+                </div>
+                <div class="py-5 sm:py-6 px-4 text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-textPrimary" dir="ltr">02</div>
+                    <div class="mt-1 text-[9px] sm:text-[10px] text-slate-500">حالت نمایش روشن/تیره</div>
+                </div>
+                <div class="py-5 sm:py-6 px-4 text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-accent" dir="ltr">∞</div>
+                    <div class="mt-1 text-[9px] sm:text-[10px] text-slate-500">مسیر توسعه و مقیاس</div>
+                </div>
+            </div>
+
+            <div class="overflow-hidden border-t border-slate-900/60 py-3.5 sm:py-4" dir="ltr">
+                <div class="binux-marquee-track flex items-center gap-8 sm:gap-12 text-[9px] sm:text-[10px] font-mono tracking-[0.22em] text-slate-600 uppercase">
+                    <span class="text-brand-accent/80">DJANGO</span><span>PYTHON</span><span>POSTGRESQL</span><span>REST API</span><span>DOCKER</span><span>LINUX</span><span>SEO</span><span>PERFORMANCE</span>
+                    <span class="text-brand-accent/80">DJANGO</span><span>PYTHON</span><span>POSTGRESQL</span><span>REST API</span><span>DOCKER</span><span>LINUX</span><span>SEO</span><span>PERFORMANCE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added Layer: Interactive Services / System Demo -->
+    <section id="services-demo" class="py-16 sm:py-20 relative z-10 border-b border-slate-900/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="max-w-3xl mb-10 sm:mb-12">
+                <div class="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-mono tracking-[0.18em] text-brand-accent uppercase">
+                    <span class="w-7 h-px bg-brand-accent"></span>
+                    Engineering Modules
+                </div>
+                <h2 class="mt-3 text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-brand-textPrimary">
+                    فقط توضیح نمی‌دهیم؛ سیستم را نشان می‌دهیم
+                </h2>
+                <p class="mt-4 text-brand-textSecondary text-xs sm:text-sm leading-7 max-w-2xl">
+                    روی هر ماژول بزنید تا ببینید بینوکس در همان بخش چه مسئله‌ای را حل می‌کند و چه خروجی‌ای تحویل می‌دهد.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-5 lg:gap-6 items-stretch">
+                <div class="space-y-2.5" id="service-demo-list">
+                    <button type="button" data-service-key="architecture" onclick="setBinuxService('architecture')" class="service-demo-item is-active w-full text-right rounded-2xl border border-brand-accent/25 bg-brand-accent/5 p-4 sm:p-5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/10 text-brand-accent flex items-center justify-center font-mono text-xs">01</span>
+                            <div>
+                                <div class="text-sm font-bold text-brand-textPrimary">معماری نرم‌افزار</div>
+                                <div class="text-[10px] text-slate-500 mt-1">ساختار قابل توسعه و قابل نگهداری</div>
+                            </div>
+                        </div>
+                    </button>
+                    <button type="button" data-service-key="enterprise" onclick="setBinuxService('enterprise')" class="service-demo-item w-full text-right rounded-2xl border border-slate-900 bg-brand-card/60 p-4 sm:p-5 hover:border-brand-neonBlue/20">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-blue-500/10 text-brand-neonBlue flex items-center justify-center font-mono text-xs">02</span>
+                            <div>
+                                <div class="text-sm font-bold text-brand-textPrimary">سیستم‌های سازمانی</div>
+                                <div class="text-[10px] text-slate-500 mt-1">CRM، DMS، ERP و اتوماسیون</div>
+                            </div>
+                        </div>
+                    </button>
+                    <button type="button" data-service-key="apps" onclick="setBinuxService('apps')" class="service-demo-item w-full text-right rounded-2xl border border-slate-900 bg-brand-card/60 p-4 sm:p-5 hover:border-brand-purple/20">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-purple-500/10 text-brand-purple flex items-center justify-center font-mono text-xs">03</span>
+                            <div>
+                                <div class="text-sm font-bold text-brand-textPrimary">اپلیکیشن و وب</div>
+                                <div class="text-[10px] text-slate-500 mt-1">Web App، Mobile App و API</div>
+                            </div>
+                        </div>
+                    </button>
+                    <button type="button" data-service-key="infra" onclick="setBinuxService('infra')" class="service-demo-item w-full text-right rounded-2xl border border-slate-900 bg-brand-card/60 p-4 sm:p-5 hover:border-pink-500/20">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center font-mono text-xs">04</span>
+                            <div>
+                                <div class="text-sm font-bold text-brand-textPrimary">زیرساخت و استقرار</div>
+                                <div class="text-[10px] text-slate-500 mt-1">Deployment، Monitoring و پشتیبانی</div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="relative overflow-hidden rounded-3xl border border-slate-900/80 bg-brand-card/75 backdrop-blur-xl min-h-[330px] sm:min-h-[370px]">
+                    <div class="absolute inset-0 opacity-50" style="background-image: linear-gradient(rgba(16,185,129,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,.035) 1px, transparent 1px); background-size: 24px 24px;"></div>
+                    <div class="absolute -top-20 -left-20 w-52 h-52 rounded-full bg-brand-accent/10 blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 p-5 sm:p-7 h-full flex flex-col" id="service-demo-panel">
+                        <div class="flex items-center justify-between gap-4">
+                            <span id="service-demo-kicker" class="text-[9px] font-mono tracking-[0.2em] text-brand-accent" dir="ltr">MODULE / ARCHITECTURE</span>
+                            <span id="service-demo-status" class="inline-flex items-center gap-1.5 text-[8px] font-mono text-slate-500" dir="ltr"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>READY</span>
+                        </div>
+                        <h3 id="service-demo-title" class="mt-7 text-2xl sm:text-3xl font-black text-brand-textPrimary">معماری نرم‌افزار مقیاس‌پذیر</h3>
+                        <p id="service-demo-copy" class="mt-4 text-xs sm:text-sm leading-7 text-brand-textSecondary max-w-2xl">
+                            دامنه‌ها را از ابتدا ماژولار طراحی می‌کنیم تا سیستم در مسیر رشد کسب‌وکار، بدون بازنویسی بی‌دلیل قابل توسعه باقی بماند.
+                        </p>
+
+                        <div class="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                            <div class="rounded-xl border border-slate-900 bg-black/20 p-3">
+                                <div class="text-[8px] text-slate-500">CORE</div>
+                                <div id="service-demo-core" class="mt-1.5 text-[10px] font-bold text-brand-textPrimary" dir="ltr">MODULAR</div>
+                            </div>
+                            <div class="rounded-xl border border-slate-900 bg-black/20 p-3">
+                                <div class="text-[8px] text-slate-500">DATA</div>
+                                <div id="service-demo-data" class="mt-1.5 text-[10px] font-bold text-brand-textPrimary" dir="ltr">CONSISTENT</div>
+                            </div>
+                            <div class="rounded-xl border border-slate-900 bg-black/20 p-3">
+                                <div class="text-[8px] text-slate-500">SCALE</div>
+                                <div id="service-demo-scale" class="mt-1.5 text-[10px] font-bold text-brand-textPrimary" dir="ltr">READY</div>
+                            </div>
+                            <div class="rounded-xl border border-slate-900 bg-black/20 p-3">
+                                <div class="text-[8px] text-slate-500">STACK</div>
+                                <div id="service-demo-stack" class="mt-1.5 text-[10px] font-bold text-brand-accent" dir="ltr">DJANGO</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto pt-7 border-t border-slate-900/70">
+                            <div id="service-demo-tags" class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1.5 rounded-lg border border-slate-900 bg-black/20 text-[9px] text-slate-400 font-mono">Clean Architecture</span>
+                                <span class="px-2.5 py-1.5 rounded-lg border border-slate-900 bg-black/20 text-[9px] text-slate-400 font-mono">Scalable Systems</span>
+                                <span class="px-2.5 py-1.5 rounded-lg border border-slate-900 bg-black/20 text-[9px] text-slate-400 font-mono">Maintainable Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 2: Portfolio Gallery -->
     <section id="gallery" class="py-16 sm:py-24 border-t border-slate-900 bg-brand-dark/40 relative z-10 scroll-mt-20 transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20 space-y-3">
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-400">پروژه‌های متمایز بینوکس</h2>
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-400">پروژه‌های انجام شده بینوکس</h2>
                 <div class="w-16 h-1 bg-gradient-to-r from-brand-accent to-brand-neonBlue mx-auto rounded-full"></div>
-                <p class="text-brand-textSecondary text-xs px-4">گلچینی از مدرن‌ترین پروژه‌های وب که مرزهای طراحی فرانت‌اَند و کارایی بک‌اَند را بازتعریف کرده‌اند.</p>
+                <p class="text-brand-textSecondary text-xs sm:text-sm px-4 leading-relaxed">نمونه‌ای از پروژه‌های نرم‌افزاری و وبی که در حوزه‌های سازمانی، CRM، اتوماسیون و تجربه دیجیتال توسعه داده شده‌اند.</p>
             </div>
 
-            <!-- Responsive Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-                <!-- Card 1 -->
-                <div class="spotlight-card group relative bg-slate-950/40 border border-slate-900/60 rounded-2xl p-5 sm:p-6 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+                {% for project in projects %}
+                <a href="{% url 'pages:project_detail' project.slug %}" data-project-slug="{{ project.slug }}" onclick="event.preventDefault(); openProjectModal('{{ project.slug }}')" class="no-underline spotlight-card group relative text-right w-full bg-slate-950/40 border border-slate-900/60 rounded-2xl p-4 sm:p-5 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60 transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/20 hover:bg-slate-950/55 hover:shadow-[0_18px_45px_rgba(0,0,0,0.24)]">
                     <div class="spotlight-border absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: radial-gradient(130px circle at var(--x, 0px) var(--y, 0px), rgba(16, 185, 129, 0.4), transparent 80%); z-index: -1;"></div>
-                    <div class="spotlight-layer absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: radial-gradient(130px circle at var(--x, 0px) var(--y, 0px), rgba(16, 185, 129, 0.08), transparent 80%);"></div>
-                    
-                    <div class="relative space-y-4 z-10 pointer-events-none">
-                        <div class="h-40 sm:h-44 w-full bg-brand-dark/90 rounded-xl border border-slate-900 flex items-center justify-center relative overflow-hidden group-hover:border-brand-accent/30 transition-colors">
-                            <span class="text-xs font-mono text-brand-accent tracking-widest">[// E-COMMERCE ENGINE]</span>
+                    <div class="relative z-10 space-y-4">
+                        {% if project.cover_image %}
+                            <div class="h-40 sm:h-44 w-full bg-brand-dark rounded-xl border border-slate-800 overflow-hidden relative">
+                                <img decoding="async" src="{{ project.cover_image.url }}" alt="{{ project.title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-700 ease-out">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            </div>
+                        {% else %}
+                            <div class="h-40 sm:h-44 w-full bg-gradient-to-br from-brand-dark via-slate-900 to-brand-card rounded-xl border border-slate-800 flex items-center justify-center overflow-hidden">
+                                <div class="text-center px-3">
+                                    <div class="text-[9px] font-mono text-brand-accent tracking-widest mb-2">[// {{ project.category|upper }}]</div>
+                                    <div class="text-sm font-bold text-slate-200">{{ project.title }}</div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div>
+                            <div class="text-[10px] text-brand-accent font-semibold mb-1">{{ project.category }}</div>
+                            <h3 class="text-base sm:text-lg font-bold text-brand-textPrimary transition-transform duration-300 group-hover:-translate-x-0.5">{{ project.title }}</h3>
                         </div>
-                        <h3 class="text-base sm:text-lg font-bold text-slate-100">پلتفرم نکسوس شاپ</h3>
-                        <p class="text-brand-textSecondary text-xs leading-relaxed">فروشگاه فوق‌سریع نسل جدید به همراه مدیریت پویا و پیشرفته انبارداری و اتصال امن به درگاه‌های بین‌المللی.</p>
-                        <div class="flex gap-2 pt-1">
-                            <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[10px] text-slate-400 font-mono">Django Rest</span>
-                            <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[10px] text-slate-400 font-mono">PostgreSQL</span>
+                        <p class="text-brand-textSecondary text-xs leading-6 line-clamp-3">{{ project.short_description }}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {% for tech in project.technology_list|slice:":3" %}
+                                <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[9px] text-slate-400 font-mono">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="pt-1 text-xs font-bold text-brand-accent group-hover:text-white transition-colors inline-flex items-center gap-1.5">
+                            <span>مشاهده آلبوم و جزئیات</span>
+                            <span class="transition-transform duration-300 group-hover:-translate-x-1">←</span>
                         </div>
                     </div>
-                </div>
+                </a>
+                {% empty %}
+                    <div class="md:col-span-2 lg:col-span-4 text-center py-12 text-sm text-slate-500">هنوز پروژه‌ای برای نمایش ثبت نشده است.</div>
+                {% endfor %}
+            </div>
 
-                <!-- Card 2 -->
-                <div class="spotlight-card group relative bg-slate-950/40 border border-slate-900/60 rounded-2xl p-5 sm:p-6 overflow-hidden">
-                    <div class="spotlight-border absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: radial-gradient(130px circle at var(--x, 0px) var(--y, 0px), rgba(59, 130, 246, 0.4), transparent 80%); z-index: -1;"></div>
-                    <div class="spotlight-layer absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: radial-gradient(130px circle at var(--x, 0px) var(--y, 0px), rgba(59, 130, 246, 0.08), transparent 80%);"></div>
-                    
-                    <div class="relative space-y-4 z-10 pointer-events-none">
-                        <div class="h-40 sm:h-44 w-full bg-brand-dark/90 rounded-xl border border-slate-900 flex items-center justify-center relative overflow-hidden group-hover:border-brand-neonBlue/30 transition-colors">
-                            <span class="text-xs font-mono text-brand-neonBlue tracking-widest">[// SAAS REALTIME DATA]</span>
-                        </div>
-                        <h3 class="text-base sm:text-lg font-bold text-slate-100">داشبورد آماری بینوفلو</h3>
-                        <p class="text-brand-textSecondary text-xs leading-relaxed">بستر مانیتورینگ داده‌های کلان با پروتکل ارتباطی ریل‌تایم و امنیت پیشرفته توزیع اطلاعات بصورت گرافیک زنده.</p>
-                        <div class="flex gap-2 pt-1">
-                            <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[10px] text-slate-400 font-mono">WebSockets</span>
-                            <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[10px] text-slate-400 font-mono">Tailwind v4</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="spotlight-card group relative bg-slate-950/40 border border-slate-900/60 rounded-2xl p-5 sm:p-6 overflow-hidden">
-                    <div class="spotlight-border absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: radial-gradient(130px circle at var(--x, 0px) var(--y, 0px), rgba(139, 92, 246, 0.4), transparent 80%); z-index: -1;"></div>
-                    <div class="spotlight-layer absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: radial-gradient(130px circle at var(--x, 0px) var(--y, 0px), rgba(139, 92, 246, 0.08), transparent 80%);"></div>
-                    
-                    <div class="relative space-y-4 z-10 pointer-events-none">
-                        <div class="h-40 sm:h-44 w-full bg-brand-dark/90 rounded-xl border border-slate-900 flex items-center justify-center relative overflow-hidden group-hover:border-brand-purple/30 transition-colors">
-                            <span class="text-xs font-mono text-brand-purple tracking-widest">[// HEADLESS WEB APP]</span>
-                        </div>
-                        <h3 class="text-base sm:text-lg font-bold text-slate-100">آرت استودیو سی‌ام‌اس</h3>
-                        <p class="text-brand-textSecondary text-xs leading-relaxed">وب‌سایت اختصاصی کانون طراحان با ساختار مدیریت محتوای بدون‌سرور و رندرهای لحظه‌ای گرافیکی.</p>
-                        <div class="flex gap-2 pt-1">
-                            <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[10px] text-brand-textSecondary font-mono">Headless CMS</span>
-                            <span class="px-2 py-1 bg-brand-card border border-slate-800 rounded-md text-[10px] text-brand-textSecondary font-mono">Django Rest</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-10 sm:mt-12 text-center">
+                <a href="{% url 'pages:projects' %}" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-800 text-xs font-bold text-slate-300 hover:border-brand-accent/30 hover:text-brand-accent transition-all">
+                    ادامه و مشاهده همه پروژه‌ها
+                    <span aria-hidden="true">←</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- IDEA 2: Interactive Cyber Performance & SEO Simulator Tool Dashboard -->
-    <section id="simulator" class="py-16 sm:py-24 border-t border-slate-900 bg-brand-dark/20 relative z-10 scroll-mt-20 transition-colors duration-500">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="bg-brand-card border border-slate-900 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-                <!-- Glowing Aura backdrop -->
-                <div class="absolute -top-1/4 -right-1/4 w-80 h-80 rounded-full bg-brand-accent/5 blur-3xl pointer-events-none"></div>
-                
-                <div class="relative space-y-6 text-center">
-                    <h2 class="text-2xl sm:text-3xl font-black text-brand-textPrimary">عیب‌یاب و شبیه‌ساز سرعت بینوکس</h2>
-                    <p class="text-brand-textSecondary text-xs sm:text-sm max-w-xl mx-auto">آدرس دامنه سایت فعلی خود را وارد کنید تا سیستم بینوکس سرعت بارگذاری، معماری بک‌اند و رتبه سئوی آن را شبیه‌سازی و بررسی کند.</p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto pt-2">
-                        <input type="text" id="sim-url" placeholder="example.com" class="bg-brand-dark border border-slate-900 rounded-xl px-4 py-3 text-brand-textPrimary font-mono text-sm outline-none focus:border-brand-accent flex-grow transition-all">
-                        <button onclick="runDiagnosticSimulation()" class="bg-brand-accent hover:bg-emerald-600 text-brand-dark font-extrabold px-6 py-3 rounded-xl text-xs tracking-wider transition-all duration-300 shadow-md hover:shadow-emerald-500/20">شروع تست سرعت</button>
-                    </div>
-
-                    <!-- Hidden results console triggered dynamically -->
-                    <div id="sim-results" class="hidden pt-6 border-t border-slate-900/40 grid grid-cols-3 gap-4 text-center font-mono">
-                        <div>
-                            <span class="block text-[10px] text-slate-500 uppercase">LCP Score</span>
-                            <span class="block text-lg font-bold text-brand-accent" id="res-lcp">0.0s</span>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] text-slate-500 uppercase">Security</span>
-                            <span class="block text-lg font-bold text-brand-neonBlue" id="res-sec">Optimal</span>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] text-slate-500 uppercase">SEO index</span>
-                            <span class="block text-lg font-bold text-brand-purple" id="res-seo">0%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Specs Section (IDEA 3: Interactive 3D Microchip Spec Cards) -->
+    <!-- Section 3: Technical Capabilities -->
     <section id="about" class="py-16 sm:py-24 border-t border-slate-900/60 relative z-10 scroll-mt-20 transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20 space-y-3">
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-400">شناسنامه فنی بینوکس</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-400">توانمندی‌های فنی بینوکس</h2>
                 <div class="w-16 h-1 bg-gradient-to-r from-brand-accent to-brand-neonBlue mx-auto rounded-full"></div>
-                <p class="text-brand-textSecondary text-xs px-4">استانداردهای مهندسی‌شده و جزئیات تکنولوژیک که تضمین‌کننده موفقیت هر پروژه است. (برای مشاهده کدهای بهینه‌سازی کلیک کنید)</p>
+                <p class="text-brand-textSecondary text-xs sm:text-sm px-4 leading-relaxed">توسعه نرم‌افزارهای اختصاصی و راهکارهای دیجیتال برای کسب‌وکارها؛ از تحلیل و طراحی معماری نرم‌افزار تا توسعه، استقرار و پشتیبانی.</p>
             </div>
 
-            <!-- Specs Grid (Flipping microchip style cards) -->
+            <!-- Technical Capabilities Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                <!-- Spec Card 1 (Speed) -->
-                <div onclick="toggleChipset(this, 'speed-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-brand-accent/20 transition-all duration-300 relative overflow-hidden">
+                <!-- Card 1: Software Architecture -->
+                <div onclick="toggleChipset(this, 'architecture-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-brand-accent/20 transition-all duration-300 relative overflow-hidden">
                     <div class="w-10 h-10 bg-emerald-500/10 text-brand-accent rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"></path></svg>
                     </div>
-                    <h3 class="text-sm font-bold text-brand-textPrimary">سرعت لود اولترا-فست</h3>
-                    <p class="text-brand-textSecondary text-xs leading-relaxed">کاهش بار محاسباتی دیتابیس در لایه‌های مدل جنگو جهت رسیدن به زمان پاسخ‌دهی شگفت‌انگیز مرورگر.</p>
-                    <div id="speed-code" class="hidden text-left font-mono text-[9px] text-brand-accent bg-black/60 p-2 rounded border border-slate-900">
-                        # Django Gzip Middleware<br>
-                        MIDDLEWARE = [<br>
-                        &nbsp;&nbsp;'django.middleware.gzip.GZipMiddleware',<br>
-                        &nbsp;&nbsp;...<br>
-                        ]
+                    <h3 class="text-sm font-bold text-brand-textPrimary">معماری نرم‌افزار مقیاس‌پذیر</h3>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">نرم‌افزارهای اختصاصی را با معماری اصولی و قابل توسعه طراحی می‌کنیم تا با رشد کاربران، داده‌ها و فرآیندهای کسب‌وکار، عملکرد، امنیت و پایداری سیستم حفظ شود.</p>
+                    <div id="architecture-code" class="hidden text-left font-mono text-[9px] text-brand-accent bg-black/60 p-2 rounded border border-slate-900">
+                        Architecture<br>
+                        Scalable Systems<br>
+                        Clean Architecture
                     </div>
                 </div>
 
-                <!-- Spec Card 2 (Security) -->
-                <div onclick="toggleChipset(this, 'sec-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-brand-neonBlue/20 transition-all duration-300 relative overflow-hidden">
+                <!-- Card 2: Enterprise Systems -->
+                <div onclick="toggleChipset(this, 'systems-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-brand-neonBlue/20 transition-all duration-300 relative overflow-hidden">
                     <div class="w-10 h-10 bg-blue-500/10 text-brand-neonBlue rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h18v16H3zM7 8h4v3H7zm0 5h4v3H7zm6-5h4v8h-4z"></path></svg>
                     </div>
-                    <h3 class="text-sm font-bold text-brand-textPrimary">دیواره امنیتی یکپارچه</h3>
-                    <p class="text-brand-textSecondary text-xs leading-relaxed">پیاده‌سازی مکانیزم‌های دفاعی بومی جنگو در برابر تمام آسیب‌پذیری‌های امنیتی فهرست OWASP.</p>
-                    <div id="sec-code" class="hidden text-left font-mono text-[9px] text-brand-neonBlue bg-black/60 p-2 rounded border border-slate-900">
-                        # Security Headers<br>
-                        SECURE_BROWSER_XSS_FILTER = True<br>
-                        SECURE_CONTENT_TYPE_NOSNIFF = True<br>
-                        SESSION_COOKIE_SECURE = True
+                    <h3 class="text-sm font-bold text-brand-textPrimary">طراحی و توسعه سیستم‌های سازمانی</h3>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">راهکارهای نرم‌افزاری متناسب با فرآیندهای هر سازمان؛ از طراحی و توسعه سیستم‌های CRM، DMS و ERP تا سامانه‌های مدیریت منابع، مشتریان، اسناد و فرآیندهای داخلی.</p>
+                    <div id="systems-code" class="hidden text-left font-mono text-[9px] text-brand-neonBlue bg-black/60 p-2 rounded border border-slate-900">
+                        CRM / DMS / ERP<br>
+                        Business Systems<br>
+                        Custom Software
                     </div>
                 </div>
 
-                <!-- Spec Card 3 (SEO) -->
-                <div onclick="toggleChipset(this, 'seo-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-brand-purple/20 transition-all duration-300 relative overflow-hidden">
+                <!-- Card 3: Applications and Web -->
+                <div onclick="toggleChipset(this, 'applications-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-brand-purple/20 transition-all duration-300 relative overflow-hidden">
                     <div class="w-10 h-10 bg-purple-500/10 text-brand-purple rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2zM9 7h6"></path></svg>
                     </div>
-                    <h3 class="text-sm font-bold text-brand-textPrimary">الگوریتم اختصاصی سئو</h3>
-                    <p class="text-brand-textSecondary text-xs leading-relaxed">رندر کامل تگ‌های ساختاریافته وب‌سایت در سمت سرور به همراه خروجی نقشه اتوماتیک برای خزنده‌ها.</p>
-                    <div id="seo-code" class="hidden text-left font-mono text-[9px] text-brand-purple bg-black/60 p-2 rounded border border-slate-900">
-                        # Sitemap Registration<br>
-                        from django.contrib.sitemaps import Sitemap<br>
-                        class StaticSitemap(Sitemap):<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;def items(self): return ['home']
+                    <h3 class="text-sm font-bold text-brand-textPrimary">توسعه اپلیکیشن و وب‌اپلیکیشن اختصاصی</h3>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">طراحی و توسعه اپلیکیشن، وب‌اپلیکیشن و APIهای اختصاصی با تمرکز بر تجربه کاربری، امنیت، عملکرد بالا و قابلیت توسعه در آینده.</p>
+                    <div id="applications-code" class="hidden text-left font-mono text-[9px] text-brand-purple bg-black/60 p-2 rounded border border-slate-900">
+                        Web Application<br>
+                        Mobile Application<br>
+                        REST API
                     </div>
                 </div>
 
-                <!-- Spec Card 4 (Docker) -->
-                <div onclick="toggleChipset(this, 'dock-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-pink-500/20 transition-all duration-300 relative overflow-hidden">
+                <!-- Card 4: Infrastructure and Deployment -->
+                <div onclick="toggleChipset(this, 'infrastructure-code')" class="group cursor-pointer bg-brand-card border border-slate-900 rounded-2xl p-6 space-y-4 hover:border-pink-500/20 transition-all duration-300 relative overflow-hidden">
                     <div class="w-10 h-10 bg-pink-500/10 text-pink-400 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 6a2 2 0 012-2h10a2 2 0 012 2v3H5V6zm0 7h14v5a2 2 0 01-2 2H7a2 2 0 01-2-2v-5z"></path></svg>
                     </div>
-                    <h3 class="text-sm font-bold text-brand-textPrimary">زیرساخت داکرایز</h3>
-                    <p class="text-brand-textSecondary text-xs leading-relaxed">بسته‌بندی کدهای پروژه در مخازن داکر به همراه ایزوله‌سازی سرویس‌ها برای انتقال بی‌دردسر به سرورهای ابری لینوکس.</p>
-                    <div id="dock-code" class="hidden text-left font-mono text-[9px] text-pink-400 bg-black/60 p-2 rounded border border-slate-900">
-                        # Dockerfile Blueprint<br>
-                        FROM python:3.11-alpine<br>
-                        COPY requirements.txt .<br>
-                        RUN pip install -r requirements.txt
+                    <h3 class="text-sm font-bold text-brand-textPrimary">استقرار، زیرساخت و پشتیبانی نرم‌افزار</h3>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">از آماده‌سازی سرور و محیط اجرا تا استقرار، مانیتورینگ، بهینه‌سازی و پشتیبانی، در تمام چرخه عمر نرم‌افزار همراه کسب‌وکار شما هستیم.</p>
+                    <div id="infrastructure-code" class="hidden text-left font-mono text-[9px] text-pink-400 bg-black/60 p-2 rounded border border-slate-900">
+                        Deployment<br>
+                        Monitoring<br>
+                        Infrastructure<br>
+                        Maintenance
                     </div>
                 </div>
             </div>
@@ -558,34 +630,13 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-950 py-6 text-center text-[10px] text-slate-500 relative z-10 bg-slate-950/60 backdrop-blur-md">
+        {% include "pages/partials/services_footer.html" %}
         <p class="px-4">© 2026 گروه بینوکس (Binux). پیاده‌سازی شده بر پایه معماری ارشد جنگو در اکوسیستم اوبونتو لینوکس.</p>
     </footer>
 
-    <!-- INTERACTIVE CYBER TERMINAL OVERLAY -->
-    <div id="terminal-overlay" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="w-full max-w-2xl bg-[#030712] border border-brand-accent/30 rounded-xl shadow-[0_0_50px_rgba(16,185,129,0.15)] flex flex-col overflow-hidden h-[85vh] sm:h-[450px]">
-            <!-- Header bar of Terminal -->
-            <div class="bg-black/90 border-b border-slate-900 px-4 py-3 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 bg-rose-500 rounded-full inline-block cursor-pointer" onclick="toggleTerminal()"></span>
-                    <span class="text-xs font-mono text-slate-400">binux@engine-system:~$</span>
-                </div>
-                <span class="text-[10px] font-mono text-brand-accent">پورت امن ۲۲ فعال است</span>
-            </div>
-            <!-- Terminal Output/Input Area -->
-            <div id="terminal-body" class="p-4 flex-1 overflow-y-auto font-mono text-xs text-slate-300 space-y-2 custom-scrollbar select-text" dir="ltr">
-                <p class="text-brand-accent">Binux Operational Engine (v2.6-stable)</p>
-                <p class="text-slate-500">For help, type <span class="text-white">"help"</span> and press Enter. Try <span class="text-brand-purple">"matrix"</span> for visual overdrive.</p>
-                <div id="terminal-history"></div>
-                
-                <!-- Prompt Line -->
-                <div class="flex items-center gap-2 pt-2">
-                    <span class="text-brand-accent">binux@web:~$</span>
-                    <input type="text" id="terminal-input" class="bg-transparent border-none outline-none flex-1 text-slate-200 font-mono caret-brand-accent" autocomplete="off" autofocus>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{ projects_payload|json_script:"portfolio-projects-data" }}
+    {% include "pages/partials/project_modal.html" %}
+    <script src="{% static 'js/projects.js' %}"></script>
 
     <!-- Futuristic Interactive Javascript Features -->
     <script>
@@ -656,50 +707,6 @@
                 element.addEventListener('mouseenter', hoverSound);
                 element.addEventListener('click', clickSound);
             });
-        }
-
-        // Holographic Text Decoder (Glitch Matrix Text Animation)
-        function decodeHolographicText(element, finalString, duration = 1500) {
-            const matrixChars = '01#X$/\\[]{}—=+*^?_@';
-            const length = finalString.length;
-            let startTime = null;
-
-            function step(timestamp) {
-                if (!startTime) startTime = timestamp;
-                const elapsed = timestamp - startTime;
-                const progressRatio = Math.min(elapsed / duration, 1);
-
-                const decodedCount = Math.floor(progressRatio * length);
-                let currentDisplay = finalString.substring(0, decodedCount);
-
-                for (let i = decodedCount; i < length; i++) {
-                    if (finalString[i] === ' ' || finalString[i] === '\n') {
-                        currentDisplay += finalString[i];
-                    } else {
-                        currentDisplay += matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                    }
-                }
-
-                element.innerHTML = currentDisplay;
-
-                if (elapsed < duration) {
-                    requestAnimationFrame(step);
-                } else {
-                    element.innerHTML = finalString; 
-                }
-            }
-            requestAnimationFrame(step);
-        }
-
-        // Dynamic Live Core Metrics Dashboard Visualizer
-        function startMetricsVisualizer() {
-            const pingElement = document.getElementById('metric-ping');
-            if (!pingElement) return;
-
-            setInterval(() => {
-                const randomLatency = Math.floor(Math.random() * 4) + 10; 
-                pingElement.textContent = `${randomLatency}ms`;
-            }, 3000);
         }
 
         // Desktop Spotlight: Mouse Tracking
@@ -785,43 +792,6 @@
                 }
             }
             type();
-        }
-
-        // IDEA 2: Cyber Performance & SEO Simulator Tool Engine
-        function runDiagnosticSimulation() {
-            const urlInput = document.getElementById('sim-url').value.trim();
-            if (!urlInput) return;
-
-            playCyberSound(700, 'square', 0.15, 0.03);
-            toggleTerminal(); // Opens terminal
-
-            printLine(`[SYSTEM] Starting analytical thread on: "${urlInput}"`, "text-brand-purple");
-            
-            setTimeout(() => {
-                printLine(`[DNS] Resolved DNS map successfully.`, "text-slate-500");
-                printLine(`[HTTP] Headers check: HTTP/3 enabled, Secure SSL verified.`, "text-brand-neonBlue");
-            }, 600);
-
-            setTimeout(() => {
-                printLine(`[RENDER] Analyzing Client-side elements... Warning: Heavy payload detected.`, "text-yellow-500 animate-pulse");
-                printLine(`[SEO] Warning: Missing JSON-LD Schema markup nodes [1].`, "text-red-400");
-            }, 1400);
-
-            setTimeout(() => {
-                printLine(`[COMPILING RESTORATION SPECIFICATIONS...]`, "text-brand-purple animate-pulse");
-            }, 2100);
-
-            setTimeout(() => {
-                printLine(`[RECOMMENDATION] Shift to Binux Django server architecture initiated.`, "text-slate-100");
-                printLine(`✓ LCP latency reduced to 0.6 seconds.`, "text-brand-accent");
-                printLine(`✓ SEO index score raised to 100/100.`, "text-brand-accent");
-                printLine(`STATUS: Analysis thread completed safely. Workspace ready.`, "text-brand-accent font-bold");
-                
-                // Show result metrics dashboard inside simulator panel
-                document.getElementById('sim-results').classList.remove('hidden');
-                document.getElementById('res-lcp').textContent = "0.6s";
-                document.getElementById('res-seo').textContent = "100%";
-            }, 2900);
         }
 
         // IDEA 3: spec Microchip code snippet reveal
@@ -975,89 +945,6 @@
             });
         }
 
-        // Interactive Cyber Terminal Controller
-        const terminalOverlay = document.getElementById('terminal-overlay');
-        const terminalInput = document.getElementById('terminal-input');
-        const terminalHistory = document.getElementById('terminal-history');
-        const terminalBody = document.getElementById('terminal-body');
-
-        function toggleTerminal() {
-            terminalOverlay.classList.toggle('hidden');
-            if (!terminalOverlay.classList.contains('hidden')) {
-                document.body.classList.add('overflow-hidden');
-                terminalInput.focus();
-            } else {
-                document.body.classList.remove('overflow-hidden');
-            }
-        }
-
-        terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value.trim().toLowerCase();
-                processCommand(command);
-                terminalInput.value = '';
-            }
-        });
-
-        function printLine(text, cssClass = "text-slate-300") {
-            const line = document.createElement('p');
-            line.className = cssClass;
-            line.innerHTML = text;
-            terminalHistory.appendChild(line);
-            terminalBody.scrollTop = terminalBody.scrollHeight;
-        }
-
-        function processCommand(cmd) {
-            printLine(`<span class="text-brand-accent">binux@web:~$</span> ${cmd}`);
-            if (cmd === '') return;
-
-            switch (cmd) {
-                case 'help':
-                    printLine("Standard System Tools list:", "text-slate-500");
-                    printLine("  <span class='text-brand-neonBlue'>about</span>       - About Binux technical core team");
-                    printLine("  <span class='text-brand-neonBlue'>django-test</span> - Run secure diagnostics validation pipeline on Django config");
-                    printLine("  <span class='text-brand-neonBlue'>uptime</span>      - System process lifecycle metrics");
-                    printLine("  <span class='text-brand-purple'>matrix</span>      - Trigger digital matrix falling code overdrive");
-                    printLine("  <span class='text-brand-neonBlue'>clear</span>       - Clear all history from workspace shell buffer");
-                    break;
-                case 'about':
-                    printLine("Binux (بینوکس) represents the cutting edge of modern web apps.");
-                    printLine("We craft tailored Python/Django architectures linked with blazing-fast user interfaces.", "text-brand-accent");
-                    break;
-                case 'django-test':
-                    printLine("Initializing system components...", "text-yellow-500 animate-pulse");
-                    setTimeout(() => {
-                        printLine("✓ Active connection: PostgreSQL server OK.");
-                        printLine("✓ Securing channels: CSRF, HTTPS Redirects configured.");
-                        printLine("✓ Static distribution ready.");
-                        printLine("STATUS: System is optimal. Ready for massive scale.", "text-brand-accent");
-                    }, 800);
-                    break;
-                case 'uptime':
-                    printLine("Up: 724 days, 14 hours, 12 minutes. Zero downtime deployments active.");
-                    break;
-                case 'matrix':
-                    printLine("OVERDRIVE OVERLOAD EMULATED. Matrix feed activated.", "text-brand-purple animate-pulse");
-                    setTimeout(() => {
-                        for (let k = 0; k < 15; k++) {
-                            setTimeout(() => {
-                                let binaryLine = "";
-                                for (let s = 0; k < 45; k++) {
-                                    binaryLine += Math.random() > 0.5 ? "1" : "0";
-                                }
-                                printLine(binaryLine, "text-brand-accent font-mono text-[10px] tracking-widest");
-                            }, k * 100);
-                        }
-                    }, 400);
-                    break;
-                case 'clear':
-                    terminalHistory.innerHTML = '';
-                    break;
-                default:
-                    printLine(`Command not found: "${cmd}". Type "help" for a list of available operations.`, "text-red-400");
-            }
-        }
-
         // Mobile Navigation Drawer Controller
         const mobileMenu = document.getElementById('mobile-menu');
         const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -1073,19 +960,80 @@
             }
         }
 
+        // Premium navbar scroll state (visual only; no content/functionality changes)
+        const siteHeader = document.getElementById('site-header');
+        if (siteHeader) {
+            const updateHeaderState = () => {
+                siteHeader.classList.toggle('bg-brand-dark/75', window.scrollY > 18);
+                siteHeader.classList.toggle('border-white/[0.06]', window.scrollY > 18);
+                siteHeader.classList.toggle('shadow-lg', window.scrollY > 18);
+                siteHeader.classList.toggle('shadow-black/10', window.scrollY > 18);
+            };
+            updateHeaderState();
+            window.addEventListener('scroll', updateHeaderState, { passive: true });
+        }
+
+        // Added interactive engineering module demo
+        const binuxServiceData = {
+            architecture: {
+                kicker: 'MODULE / ARCHITECTURE',
+                title: 'معماری نرم‌افزار مقیاس‌پذیر',
+                copy: 'دامنه‌ها را از ابتدا ماژولار طراحی می‌کنیم تا سیستم در مسیر رشد کسب‌وکار، بدون بازنویسی بی‌دلیل قابل توسعه باقی بماند.',
+                core: 'MODULAR', data: 'CONSISTENT', scale: 'READY', stack: 'DJANGO',
+                tags: ['Clean Architecture', 'Scalable Systems', 'Maintainable Code']
+            },
+            enterprise: {
+                kicker: 'MODULE / ENTERPRISE',
+                title: 'سیستم‌های سازمانی و اتوماسیون',
+                copy: 'فرآیندهای واقعی کسب‌وکار را به ماژول‌ها و جریان‌های قابل مدیریت تبدیل می‌کنیم؛ از CRM و DMS تا ERP و اتوماسیون.',
+                core: 'WORKFLOW', data: 'SECURE', scale: 'READY', stack: 'DJANGO',
+                tags: ['CRM / DMS / ERP', 'Business Systems', 'Custom Workflow']
+            },
+            apps: {
+                kicker: 'MODULE / APPLICATIONS',
+                title: 'اپلیکیشن، وب‌اپ و API',
+                copy: 'رابط کاربری و API را بر پایه تجربه کاربری، عملکرد و قابلیت اتصال به سرویس‌های دیگر طراحی و پیاده‌سازی می‌کنیم.',
+                core: 'API-FIRST', data: 'FAST', scale: 'READY', stack: 'REST',
+                tags: ['Web Application', 'Mobile Application', 'REST API']
+            },
+            infra: {
+                kicker: 'MODULE / INFRASTRUCTURE',
+                title: 'استقرار، مانیتورینگ و پشتیبانی',
+                copy: 'بعد از توسعه، مسیر استقرار و پایداری را هم می‌بینیم؛ از محیط اجرا و deployment تا monitoring و نگهداری.',
+                core: 'STABLE', data: 'OBSERVED', scale: 'AUTO', stack: 'LINUX',
+                tags: ['Deployment', 'Monitoring', 'Infrastructure']
+            }
+        };
+
+        function setBinuxService(key) {
+            const data = binuxServiceData[key];
+            if (!data) return;
+            const panel = document.getElementById('service-demo-panel');
+            const items = document.querySelectorAll('.service-demo-item');
+            items.forEach(item => item.classList.toggle('is-active', item.dataset.serviceKey === key));
+
+            if (panel) panel.classList.add('is-swapping');
+            window.setTimeout(() => {
+                document.getElementById('service-demo-kicker').textContent = data.kicker;
+                document.getElementById('service-demo-title').textContent = data.title;
+                document.getElementById('service-demo-copy').textContent = data.copy;
+                document.getElementById('service-demo-core').textContent = data.core;
+                document.getElementById('service-demo-data').textContent = data.data;
+                document.getElementById('service-demo-scale').textContent = data.scale;
+                document.getElementById('service-demo-stack').textContent = data.stack;
+                document.getElementById('service-demo-tags').innerHTML = data.tags.map(tag =>
+                    '<span class="px-2.5 py-1.5 rounded-lg border border-slate-900 bg-black/20 text-[9px] text-slate-400 font-mono">' + tag + '</span>'
+                ).join('');
+                if (panel) panel.classList.remove('is-swapping');
+            }, 160);
+        }
+
         // Trigger actions on DOM Load
         document.addEventListener('DOMContentLoaded', () => {
             typeCode(codeTabs.py);
             initCanvas();
-            startMetricsVisualizer();
             initSpotlightCards();
             initCursorHoverEffects();
-
-            // Decode title with holographic sci-fi effect
-            const h1Title = document.querySelector('h1');
-            if (h1Title) {
-                decodeHolographicText(h1Title, "توسعه وب‌سایت‌های <br class='hidden sm:inline'> فوق‌پیشرفته و مدرن", 2000);
-            }
 
             // Attach Audio Beeps to Interactive Elements
             attachSoundEvents();
