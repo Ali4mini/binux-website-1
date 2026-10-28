@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_safe
 from .content import CONTENT, SERVICES, PROJECTS, ARTICLES
+from .navigation import navigation
 
 
 @require_safe
@@ -31,6 +32,7 @@ def localized(request, lang, page='home', slug=None):
                'canonical': 'https://binux.tech' + request.path,
                'alternate_en': request.path.replace('/fa/', '/en/', 1),
                'alternate_fa': request.path.replace('/en/', '/fa/', 1)}
+    context.update(navigation(lang))
     return render(request, 'website/page.html', context)
 
 

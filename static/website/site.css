@@ -1,40 +1,4 @@
 @font-face {
-  font-family: Manrope;
-  src: url(fonts/manrope-400.ttf) format("truetype");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: Manrope;
-  src: url(fonts/manrope-500.ttf) format("truetype");
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: Manrope;
-  src: url(fonts/manrope-600.ttf) format("truetype");
-  font-weight: 600;
-  font-display: swap;
-}
-@font-face {
-  font-family: Manrope;
-  src: url(fonts/manrope-700.ttf) format("truetype");
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: Manrope;
-  src: url(fonts/manrope-800.ttf) format("truetype");
-  font-weight: 800;
-  font-display: swap;
-}
-@font-face {
-  font-family: Geist;
-  src: url(fonts/geist-latin.woff2) format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
   font-family: Vazirmatn;
   src: url(fonts/vazirmatn.woff2) format("woff2");
   font-weight: 100 900;
@@ -52,8 +16,8 @@
   --radius: 12px;
   --container: 1224px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --body: Geist, Arial, sans-serif;
-  --display: Manrope, Arial, sans-serif;
+  --body: Inter, Arial, sans-serif;
+  --display: Panamera, Arial, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -1143,7 +1107,7 @@ summary::-webkit-details-marker {
   border: 1px solid var(--line);
   border-radius: 8px;
   text-align: center;
-  font-family: Manrope, sans-serif;
+  font-family: Panamera, sans-serif;
   font-weight: 700;
   font-size: 17px;
 }
@@ -1169,7 +1133,7 @@ summary::-webkit-details-marker {
   font-size: 20px;
 }
 .faq > summary > span {
-  font-family: Geist, sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 27px;
   font-weight: 400;
   transition: transform 0.25s;
@@ -1524,7 +1488,7 @@ summary::-webkit-details-marker {
   height: 240px;
   display: grid;
   place-items: center;
-  font-family: Manrope, sans-serif;
+  font-family: Panamera, sans-serif;
   font-size: 72px;
   font-weight: 800;
   border: 1px solid #222;
@@ -2452,5 +2416,11 @@ html[lang="fa"] .service-card p {
   }
 }
 
-.marquee-viewport:focus-within .marquee-track { animation-play-state: paused; }
-@media (max-width: 760px) { .nav-wrap { width: 100%; } }
+.marquee-viewport:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@media (max-width: 760px) {
+  .nav-wrap {
+    width: 100%;
+  }
+}

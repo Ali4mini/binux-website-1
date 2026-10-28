@@ -8,7 +8,7 @@
   const header = $("#site-header");
   let scrollQueued = false;
   const updateHeader = () => {
-    header.classList.toggle("scrolled", scrollY > 150);
+    header.classList.toggle("scrolled", scrollY > 0);
     scrollQueued = false;
   };
   addEventListener(
@@ -24,9 +24,21 @@
   updateHeader();
 
   const dropdowns = $$(".nav-dropdown");
+  const menuTimers = new WeakMap();
+  function closeMenu(menu) {
+    if (!menu.open || menu.classList.contains("menu-closing")) return;
+    menu.classList.add("menu-closing");
+    menuTimers.set(
+      menu,
+      setTimeout(() => {
+        menu.open = false;
+        menu.classList.remove("menu-closing");
+      }, 100),
+    );
+  }
   const closeMenus = (except) =>
     dropdowns.forEach((menu) => {
-      if (menu !== except) menu.open = false;
+      if (menu !== except) closeMenu(menu);
     });
   dropdowns.forEach((menu) => {
     let timer;
@@ -36,21 +48,23 @@
     menu.addEventListener("pointerenter", (event) => {
       if (
         event.pointerType === "mouse" &&
-        matchMedia("(min-width:1051px)").matches
+        matchMedia("(min-width:1200px)").matches
       ) {
         clearTimeout(timer);
+        clearTimeout(menuTimers.get(menu));
+        menu.classList.remove("menu-closing");
         closeMenus(menu);
         menu.open = true;
       }
     });
     menu.addEventListener("pointerleave", () => {
       timer = setTimeout(() => {
-        if (!menu.contains(document.activeElement)) menu.open = false;
+        if (!menu.contains(document.activeElement)) closeMenu(menu);
       }, 150);
     });
     menu.addEventListener("focusout", () =>
       setTimeout(() => {
-        if (!menu.contains(document.activeElement)) menu.open = false;
+        if (!menu.contains(document.activeElement)) closeMenu(menu);
       }, 0),
     );
   });
@@ -58,29 +72,103 @@
     if (!event.target.closest(".nav-dropdown")) closeMenus();
   });
 
+  // Preview panels activate on hover, click and vertical keyboard navigation.
+  $$(".preview-menu").forEach((root) => {
+    const tablist = $(".preview-tabs", root);
+    const buttons = $$("[role=tab]", tablist);
+    const panels = $$(":scope > [role=tabpanel]", root);
+    function select(button) {
+      buttons.forEach((tab) => {
+        const active = tab === button;
+        tab.setAttribute("aria-selected", String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(
+        (panel) =>
+          (panel.hidden = panel.id !== button.getAttribute("aria-controls")),
+      );
+    }
+    buttons.forEach((button, index) => {
+      button.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") select(button);
+      });
+      button.addEventListener("click", () => select(button));
+      button.addEventListener("keydown", (event) => {
+        const key = event.key;
+        let next;
+        if (key === "ArrowDown") next = (index + 1) % buttons.length;
+        if (key === "ArrowUp")
+          next = (index - 1 + buttons.length) % buttons.length;
+        if (key === "Home") next = 0;
+        if (key === "End") next = buttons.length - 1;
+        if (next !== undefined) {
+          event.preventDefault();
+          select(buttons[next]);
+          buttons[next].focus();
+        }
+      });
+    });
+  });
+
   const menuButton = $(".menu-toggle");
   const mobileNav = $("#mobile-nav");
   const closeMobile = () => {
     mobileNav.hidden = true;
+    document.body.classList.remove("mobile-menu-open");
     menuButton.setAttribute("aria-expanded", "false");
   };
   menuButton.addEventListener("click", () => {
     const expanded = menuButton.getAttribute("aria-expanded") === "true";
     mobileNav.hidden = expanded;
+    document.body.classList.toggle("mobile-menu-open", !expanded);
     menuButton.setAttribute("aria-expanded", String(!expanded));
   });
-  matchMedia("(min-width:1051px)").addEventListener("change", (event) => {
+  matchMedia("(min-width:1200px)").addEventListener("change", (event) => {
     if (event.matches) closeMobile();
   });
   document.addEventListener("click", (event) => {
     if (!event.target.closest(".site-header")) closeMobile();
   });
 
+  $(".mobile-menu-close").addEventListener("click", () => {
+    closeMobile();
+    menuButton.focus();
+  });
+  $$(".mobile-menu-groups > details").forEach((group) =>
+    group.addEventListener("toggle", () => {
+      if (group.open)
+        $$(".mobile-menu-groups > details").forEach((other) => {
+          if (other !== group) other.open = false;
+        });
+    }),
+  );
   const dialog = $(".search-dialog");
   const search = $("#site-search");
   const results = $(".search-results");
   const empty = $(".search-empty");
   const searchIndex = $$(".search-index a");
+  const mobileSearch = $(".mobile-search-input");
+  const mobileSearchResults = $(".mobile-search-results");
+  mobileSearch.addEventListener("input", () => {
+    const query = mobileSearch.value
+      .trim()
+      .normalize("NFKC")
+      .replaceAll("ي", "ی")
+      .replaceAll("ك", "ک")
+      .toLowerCase();
+    const matches = searchIndex.filter((item) =>
+      item.textContent
+        .normalize("NFKC")
+        .replaceAll("ي", "ی")
+        .replaceAll("ك", "ک")
+        .toLowerCase()
+        .includes(query),
+    );
+    mobileSearchResults.replaceChildren(
+      ...matches.map((item) => item.cloneNode(true)),
+    );
+    mobileSearchResults.hidden = !query;
+  });
   function updateSearch() {
     const query = search.value
       .trim()
@@ -206,6 +294,9 @@
     tab.addEventListener("keydown", (event) => {
       let next;
       const rtl = document.documentElement.dir === "rtl";
+      if (event.key === "ArrowDown") next = (index + 1) % tabs.length;
+      if (event.key === "ArrowUp")
+        next = (index - 1 + tabs.length) % tabs.length;
       if (event.key === "ArrowRight")
         next = (index + (rtl ? -1 : 1) + tabs.length) % tabs.length;
       if (event.key === "ArrowLeft")
@@ -227,6 +318,39 @@
         });
     }),
   );
+
+  $$(".reference-stars").forEach((root) => {
+    for (let index = 0; index < 85; index++) {
+      const star = document.createElement("i");
+      star.style.left = ((index * 73.31 + 11) % 100) + "%";
+      star.style.top = ((index * 37.73 + 3) % 100) + "%";
+      star.style.animationDelay = -((index * 1.37) % 5) + "s";
+      star.style.animationDuration = 3 + (index % 5) + "s";
+      root.append(star);
+    }
+  });
+  const marquee = $(".marquee-track");
+  const animateElements = $$(".marquee-track,.reference-stars i,.flow-line");
+  function animationVisibility() {
+    animateElements.forEach((element) => {
+      const r = element.getBoundingClientRect();
+      element.style.animationPlayState =
+        document.hidden || r.bottom < 0 || r.top > innerHeight ? "paused" : "";
+    });
+  }
+  addEventListener("visibilitychange", animationVisibility);
+  addEventListener("scroll", animationVisibility, { passive: true });
+  if (marquee) {
+    const sizeMarquee = () => {
+      const group = $(".marquee-group", marquee);
+      if (group)
+        marquee.style.animationDuration =
+          group.getBoundingClientRect().width / 50 + "s";
+    };
+    document.fonts.ready.then(sizeMarquee);
+    addEventListener("resize", sizeMarquee, { passive: true });
+  }
+  animationVisibility();
 
   const form = $("#project-form");
   if (form) {
