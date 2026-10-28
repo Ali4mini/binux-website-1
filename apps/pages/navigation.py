@@ -42,10 +42,10 @@ def navigation(lang):
     crm['cta_title'] = text('Discuss Your CRM Requirements','درباره نیازهای CRM صحبت کنیم')
     crm['cta_description'] = text('Tell us which customer workflows your team needs to connect.','بگویید تیم شما به اتصال کدام فرایندهای مشتری نیاز دارد.')
     crm['cta_button'] = text('Discuss CRM','گفت‌وگو درباره CRM')
-    ai = [group('assisted','AI-Assisted Delivery','توسعه با کمک هوش مصنوعی','spark',[link('ai-assisted-engineering'),item(text('Specification-Led Development','توسعه بر پایه شرح نیاز'),'ai-assisted-engineering',text('A clear scope before implementation begins.','محدوده روشن پیش از شروع پیاده‌سازی.')),item(text('Engineering Review','بازبینی مهندسی'),'ai-assisted-engineering',text('Engineers own architecture and release decisions.','مسئولیت معماری و انتشار با مهندسان است.'))], 'blue'),group('automation','Workflow Automation','اتوماسیون فرایندها','bot',[link('bots-automation'),link('custom-software')], 'blue')]
+    ai = [group('assisted','Software Delivery','توسعه نرم‌افزار','spark',[link('ai-assisted-engineering'),item(text('Specification-Led Development','توسعه بر پایه شرح نیاز'),'ai-assisted-engineering',text('A clear scope before implementation begins.','محدوده روشن پیش از شروع پیاده‌سازی.')),item(text('Engineering Review','بازبینی مهندسی'),'ai-assisted-engineering',text('Engineers own architecture and release decisions.','مسئولیت معماری و انتشار با مهندسان است.'))], 'blue'),group('automation','Workflow Automation','اتوماسیون فرایندها','bot',[link('bots-automation'),link('custom-software')], 'blue')]
     industries = [group('business','Business Operations','عملیات کسب‌وکار','system',[link('crm-erp'),link('custom-software')],'mint'),group('property','Real Estate','املاک','web',[item(text('Real Estate CRM','CRM املاک'),'crm-erp',text('Property and customer workflows for your team.','فرایندهای ملک و مشتری برای تیم شما.')),link('web-development')],'mint'),group('service','Service Businesses','کسب‌وکارهای خدماتی','bot',[link('bots-automation'),link('mobile-apps')],'mint')]
     tech = [
-      ('ai','AI-Assisted Dev Tools','ابزارهای توسعه با هوش مصنوعی',['Codex','Hermes','OpenCode','AI-assisted tools']),
+      ('ai','Development Tools','ابزارهای توسعه',['Codex','Hermes','OpenCode',text('Engineering tools','ابزارهای مهندسی')]),
       ('frontend','Frontend Development','توسعه فرانت‌اند',['React','JavaScript','TypeScript','React Native','Expo']),
       ('frontend-tools','Frontend Tools & Libraries','ابزارها و کتابخانه‌های فرانت‌اند',['Tailwind CSS','React Router','Vite']),
       ('backend','Backend Development','توسعه بک‌اند',['Python','Django','REST APIs']),
@@ -57,7 +57,7 @@ def navigation(lang):
     logos = {name:'website/technology/'+slug+'.svg' for name,slug in [('React','react'),('React Native','react'),('JavaScript','javascript'),('TypeScript','typescript'),('Expo','expo'),('Tailwind CSS','tailwindcss'),('React Router','reactrouter'),('Vite','vite'),('Python','python'),('Django','django'),('PostgreSQL','postgresql'),('Redis','redis'),('SQLite','sqlite'),('Docker','docker'),('Linux','linux'),('Google Cloud','googlecloud'),('Telegram','telegram'),('GitHub Actions','githubactions'),('Git','git')]}
     return {'service_groups':groups, 'ai_groups':ai,'industry_groups':industries,
             'technology_groups':[{'key':key,'title':text(en,persian),'tools':[{'title':tool,'logo':logos.get(tool,'')} for tool in tools]} for key,en,persian,tools in tech],
-            'nav_ai':text('AI','هوش مصنوعی'),'nav_industries':text('Industries','صنایع'),'nav_work':text('Case Studies','نمونه‌کارها'),'nav_quote':text('Pricing','برآورد'),
+            'nav_ai':text('Engineering','مهندسی'),'nav_industries':text('Industries','صنایع'),'nav_work':text('Case Studies','نمونه‌کارها'),'nav_quote':text('Pricing','برآورد'),
             'nav_view':text('View all services →','همه خدمات ←'),'nav_start':text('Start a Project','شروع پروژه'),
             'nav_note':text('Web, mobile & business software · Engineer-led delivery','وب، موبایل و نرم‌افزار کسب‌وکار · توسعه با مسئولیت مهندسان'),
             'nav_support':text('Clear scope · Direct communication · Technical handover','محدوده روشن · ارتباط مستقیم · تحویل فنی'),
