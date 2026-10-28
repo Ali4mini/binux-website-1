@@ -7,6 +7,7 @@ from apps.pages.seo_views import robots_txt, sitemap_xml
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apps.pages.website_urls', namespace='website')),
     path('', include('apps.pages.urls', namespace='pages')),
     path('sitemap.xml', sitemap_xml, name='sitemap'),
     path('robots.txt', robots_txt, name='robots'),

@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-28T21:28:39.008742+00:00",
+  "title": "Design System: Binux",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.23006 267.88)",
+          "oklch(27% 0.23006 267.88)",
+          "oklch(38% 0.23006 267.88)",
+          "oklch(50% 0.23006 267.88)",
+          "oklch(61% 0.23006 267.88)",
+          "oklch(73% 0.23006 267.88)",
+          "oklch(84% 0.23006 267.88)",
+          "oklch(95% 0.23006 267.88)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "blue-deep": {
+        "role": "primary",
+        "displayName": "Blue deep",
+        "tonalRamp": [
+          "oklch(15% 0.18957 266.30)",
+          "oklch(27% 0.18957 266.30)",
+          "oklch(38% 0.18957 266.30)",
+          "oklch(50% 0.18957 266.30)",
+          "oklch(61% 0.18957 266.30)",
+          "oklch(73% 0.18957 266.30)",
+          "oklch(84% 0.18957 266.30)",
+          "oklch(95% 0.18957 266.30)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.01998 271.73)",
+          "oklch(27% 0.01998 271.73)",
+          "oklch(38% 0.01998 271.73)",
+          "oklch(50% 0.01998 271.73)",
+          "oklch(61% 0.01998 271.73)",
+          "oklch(73% 0.01998 271.73)",
+          "oklch(84% 0.01998 271.73)",
+          "oklch(95% 0.01998 271.73)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.02785 264.26)",
+          "oklch(27% 0.02785 264.26)",
+          "oklch(38% 0.02785 264.26)",
+          "oklch(50% 0.02785 264.26)",
+          "oklch(61% 0.02785 264.26)",
+          "oklch(73% 0.02785 264.26)",
+          "oklch(84% 0.02785 264.26)",
+          "oklch(95% 0.02785 264.26)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.00876 264.52)",
+          "oklch(27% 0.00876 264.52)",
+          "oklch(38% 0.00876 264.52)",
+          "oklch(50% 0.00876 264.52)",
+          "oklch(61% 0.00876 264.52)",
+          "oklch(73% 0.00876 264.52)",
+          "oklch(84% 0.00876 264.52)",
+          "oklch(95% 0.00876 264.52)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "pale-blue": {
+        "role": "secondary",
+        "displayName": "Pale blue",
+        "tonalRamp": [
+          "oklch(15% 0.02085 271.20)",
+          "oklch(27% 0.02085 271.20)",
+          "oklch(38% 0.02085 271.20)",
+          "oklch(50% 0.02085 271.20)",
+          "oklch(61% 0.02085 271.20)",
+          "oklch(73% 0.02085 271.20)",
+          "oklch(84% 0.02085 271.20)",
+          "oklch(95% 0.02085 271.20)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "pale-yellow": {
+        "role": "secondary",
+        "displayName": "Pale yellow",
+        "tonalRamp": [
+          "oklch(15% 0.06286 96.63)",
+          "oklch(27% 0.06286 96.63)",
+          "oklch(38% 0.06286 96.63)",
+          "oklch(50% 0.06286 96.63)",
+          "oklch(61% 0.06286 96.63)",
+          "oklch(73% 0.06286 96.63)",
+          "oklch(84% 0.06286 96.63)",
+          "oklch(95% 0.06286 96.63)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "pale-green": {
+        "role": "secondary",
+        "displayName": "Pale green",
+        "tonalRamp": [
+          "oklch(15% 0.04338 156.74)",
+          "oklch(27% 0.04338 156.74)",
+          "oklch(38% 0.04338 156.74)",
+          "oklch(50% 0.04338 156.74)",
+          "oklch(61% 0.04338 156.74)",
+          "oklch(73% 0.04338 156.74)",
+          "oklch(84% 0.04338 156.74)",
+          "oklch(95% 0.04338 156.74)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(27% 0.00000 89.88)",
+          "oklch(38% 0.00000 89.88)",
+          "oklch(50% 0.00000 89.88)",
+          "oklch(61% 0.00000 89.88)",
+          "oklch(73% 0.00000 89.88)",
+          "oklch(84% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "heading": {
+        "role": "neutral",
+        "displayName": "Heading",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(27% 0.00000 89.88)",
+          "oklch(38% 0.00000 89.88)",
+          "oklch(50% 0.00000 89.88)",
+          "oklch(61% 0.00000 89.88)",
+          "oklch(73% 0.00000 89.88)",
+          "oklch(84% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "dark-section": {
+        "role": "neutral",
+        "displayName": "Dark section",
+        "tonalRamp": [
+          "oklch(15% 0.00000 89.88)",
+          "oklch(27% 0.00000 89.88)",
+          "oklch(38% 0.00000 89.88)",
+          "oklch(50% 0.00000 89.88)",
+          "oklch(61% 0.00000 89.88)",
+          "oklch(73% 0.00000 89.88)",
+          "oklch(84% 0.00000 89.88)",
+          "oklch(95% 0.00000 89.88)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "footer": {
+        "role": "neutral",
+        "displayName": "Footer",
+        "tonalRamp": [
+          "oklch(15% 0.02737 261.69)",
+          "oklch(27% 0.02737 261.69)",
+          "oklch(38% 0.02737 261.69)",
+          "oklch(50% 0.02737 261.69)",
+          "oklch(61% 0.02737 261.69)",
+          "oklch(73% 0.02737 261.69)",
+          "oklch(84% 0.02737 261.69)",
+          "oklch(95% 0.02737 261.69)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "button-hover": {
+        "role": "primary",
+        "displayName": "Button hover",
+        "tonalRamp": [
+          "oklch(15% 0.22347 267.45)",
+          "oklch(27% 0.22347 267.45)",
+          "oklch(38% 0.22347 267.45)",
+          "oklch(50% 0.22347 267.45)",
+          "oklch(61% 0.22347 267.45)",
+          "oklch(73% 0.22347 267.45)",
+          "oklch(84% 0.22347 267.45)",
+          "oklch(95% 0.22347 267.45)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "pill-blue": {
+        "role": "secondary",
+        "displayName": "Pill blue",
+        "tonalRamp": [
+          "oklch(15% 0.04275 269.55)",
+          "oklch(27% 0.04275 269.55)",
+          "oklch(38% 0.04275 269.55)",
+          "oklch(50% 0.04275 269.55)",
+          "oklch(61% 0.04275 269.55)",
+          "oklch(73% 0.04275 269.55)",
+          "oklch(84% 0.04275 269.55)",
+          "oklch(95% 0.04275 269.55)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      },
+      "contact-blue": {
+        "role": "primary",
+        "displayName": "Contact blue",
+        "tonalRamp": [
+          "oklch(15% 0.19457 257.81)",
+          "oklch(27% 0.19457 257.81)",
+          "oklch(38% 0.19457 257.81)",
+          "oklch(50% 0.19457 257.81)",
+          "oklch(61% 0.19457 257.81)",
+          "oklch(73% 0.19457 257.81)",
+          "oklch(84% 0.19457 257.81)",
+          "oklch(95% 0.19457 257.81)"
+        ],
+        "rampPurpose": "Synthesized panel preview; source CSS color stays normative."
+      }
+    },
+    "typographyMeta": {
+      "persian": {
+        "displayName": "Persian",
+        "purpose": "Overrides both body and display stacks for html[lang=\"fa\"]."
+      }
+    },
+    "shadows": [
+      {
+        "name": ".button",
+        "value": "0 4px 0 #1b1b1b",
+        "purpose": "Secondary action rest"
+      },
+      {
+        "name": ".button:hover",
+        "value": "0 6px 0 #1b1b1b",
+        "purpose": "Secondary action hover"
+      },
+      {
+        "name": ".button:active",
+        "value": "0 1px 0 #1b1b1b",
+        "purpose": "Secondary action active"
+      },
+      {
+        "name": ".button.primary",
+        "value": "0 4px 0 var(--blue-deep)",
+        "purpose": "Primary action rest"
+      },
+      {
+        "name": ".button.primary:hover",
+        "value": "0 6px 0 var(--blue-deep)",
+        "purpose": "Primary action hover"
+      },
+      {
+        "name": ".button.primary:active",
+        "value": "0 1px 0 var(--blue-deep)",
+        "purpose": "Primary action active"
+      },
+      {
+        "name": ".nav-wrap",
+        "value": "4px 4px 0 #070707",
+        "purpose": "Floating navigation"
+      },
+      {
+        "name": ".mega-menu",
+        "value": "0 20px 32px #101b321a",
+        "purpose": "Expanded navigation"
+      },
+      {
+        "name": ".project-visual > img",
+        "value": "0 12px 24px #14203a26",
+        "purpose": "Project imagery"
+      },
+      {
+        "name": ".project-form",
+        "value": "0 10px 25px #1624490a",
+        "purpose": "Project inquiry form"
+      },
+      {
+        "name": ".search-dialog",
+        "value": "0 20px 60px #0003",
+        "purpose": "Search overlay"
+      },
+      {
+        "name": ".contact-drawer",
+        "value": "0 12px 40px #15213a2e",
+        "purpose": "Contact drawer"
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Source --ease used by interface transitions and entrances."
+      },
+      {
+        "name": "button-state",
+        "value": "0.2s",
+        "purpose": "Button transform, shadow, and background transitions."
+      },
+      {
+        "name": "menu-in",
+        "value": "0.25s var(--ease)",
+        "purpose": "Mega menu clipped reveal with upward offset."
+      },
+      {
+        "name": "header-in",
+        "value": "0.3s var(--ease)",
+        "purpose": "Pinned header enters from -15px."
+      },
+      {
+        "name": "hero-in",
+        "value": "1s / 1.1s / 1.2s var(--ease)",
+        "purpose": "Heading/actions/pills rise from 14px and clear 1px blur."
+      },
+      {
+        "name": "section-in",
+        "value": "0.75s var(--ease)",
+        "purpose": "Revealed sections rise from 28px."
+      },
+      {
+        "name": "marquee",
+        "value": "36s linear infinite",
+        "purpose": "TranslateX(-50%); pause on hover/focus; static scrollable reduced-motion alternative."
+      },
+      {
+        "name": "flow",
+        "value": "2s linear infinite",
+        "purpose": "Illustrative automation flow line."
+      },
+      {
+        "name": "project-perspective",
+        "value": "0.7s var(--ease)",
+        "purpose": "Screenshot perspective straightens on hover; disabled under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1600px",
+        "condition": "min-width"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1250px",
+        "condition": "max-width"
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "1050px",
+        "condition": "max-width"
+      },
+      {
+        "name": "stacked-layout",
+        "value": "760px",
+        "condition": "max-width"
+      },
+      {
+        "name": "narrow",
+        "value": "370px",
+        "condition": "max-width"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "description": "Extracted primary button appearance and CSS states; site behavior remains in the application.",
+      "html": "<button class=\"ds-button ds-primary\">Discuss your project</button>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 14px;\n  min-height: 58px;\n  padding: 14px 24px;\n  border: 1px solid #1b1b1b;\n  border-radius: 10px;\n  background: #fff;\n  box-shadow: 0 4px 0 #1b1b1b;\n  font-size: 16px;\n  font-weight: 550;\n  line-height: 1.6;\n  text-align: center;\n  transition:\n    transform 0.2s var(--ease),\n    box-shadow 0.2s var(--ease),\n    background 0.2s;\n}\n.ds-button:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 6px 0 #1b1b1b;\n  background: #f6f7fb;\n}\n.ds-button:active {\n  transform: translateY(3px);\n  box-shadow: 0 1px 0 #1b1b1b;\n}\n.ds-button.ds-primary {\n  background: var(--blue);\n  color: #fff;\n  border-color: var(--blue-deep);\n  box-shadow: 0 4px 0 var(--blue-deep);\n}\n.ds-button.ds-primary:hover {\n  background: #2946d8;\n  box-shadow: 0 6px 0 var(--blue-deep);\n}\n.ds-button.ds-primary:active {\n  box-shadow: 0 1px 0 var(--blue-deep);\n}\n.ds-dark-section .ds-button {\n  margin-block-start: 32px;\n  color: var(--ink);\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "description": "Extracted secondary button appearance and CSS states; site behavior remains in the application.",
+      "html": "<a class=\"ds-button\" href=\"#work\">Explore our work</a>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 14px;\n  min-height: 58px;\n  padding: 14px 24px;\n  border: 1px solid #1b1b1b;\n  border-radius: 10px;\n  background: #fff;\n  box-shadow: 0 4px 0 #1b1b1b;\n  font-size: 16px;\n  font-weight: 550;\n  line-height: 1.6;\n  text-align: center;\n  transition:\n    transform 0.2s var(--ease),\n    box-shadow 0.2s var(--ease),\n    background 0.2s;\n}\n.ds-button:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 6px 0 #1b1b1b;\n  background: #f6f7fb;\n}\n.ds-button:active {\n  transform: translateY(3px);\n  box-shadow: 0 1px 0 #1b1b1b;\n}\n.ds-button.ds-primary {\n  background: var(--blue);\n  color: #fff;\n  border-color: var(--blue-deep);\n  box-shadow: 0 4px 0 var(--blue-deep);\n}\n.ds-button.ds-primary:hover {\n  background: #2946d8;\n  box-shadow: 0 6px 0 var(--blue-deep);\n}\n.ds-button.ds-primary:active {\n  box-shadow: 0 1px 0 var(--blue-deep);\n}\n.ds-dark-section .ds-button {\n  margin-block-start: 32px;\n  color: var(--ink);\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}",
+      "refersTo": "button-secondary"
+    },
+    {
+      "name": "Project Field",
+      "kind": "input",
+      "description": "Extracted project field appearance and CSS states; site behavior remains in the application.",
+      "html": "<div class=\"ds-project-form\"><label for=\"ds-email\">Email</label><input id=\"ds-email\" type=\"email\" placeholder=\"you@example.com\"></div>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-project-form {\n  padding: 32px;\n  border: 1px solid #222;\n  border-radius: 12px;\n  box-shadow: 0 10px 25px #1624490a;\n}\n.ds-project-form label {\n  display: block;\n  font-size: 16px;\n  font-weight: 600;\n  margin-block-end: 8px;\n}\n.ds-project-form label > span {\n  color: var(--blue);\n}\n.ds-project-form input, .ds-project-form select, .ds-project-form textarea {\n  width: 100%;\n  border: 1px solid #a3a8b4;\n  background: #fff;\n  border-radius: 6px;\n  padding: 12px;\n  color: var(--ink);\n  font-size: 16px;\n  margin-block-end: 24px;\n  caret-color: var(--blue);\n}\n.ds-project-form input {\n  min-height: 50px;\n}\n.ds-project-form textarea {\n  resize: vertical;\n  line-height: 1.7;\n}\n.ds-project-form ::placeholder {\n  color: #626a7b;\n  opacity: 1;\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}",
+      "refersTo": "field"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Extracted navigation appearance and CSS states; site behavior remains in the application.",
+      "html": "<nav class=\"ds-nav-wrap\" aria-label=\"Example navigation\"><div class=\"ds-desktop-nav\"><a href=\"#services\">Services</a><details class=\"ds-nav-dropdown\"><summary>Company <span class=\"ds-plus\">+</span></summary><div class=\"ds-mega-menu ds-compact-mega\"><a href=\"#about\">About Binux</a></div></details></div></nav>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-nav-wrap {\n  position: relative;\n  width: min(var(--container), 100%);\n  min-height: 80px;\n  display: flex;\n  align-items: center;\n  gap: 24px;\n  padding: 12px 28px;\n  border: 1px solid #171717;\n  border-radius: 4px;\n  background: #fff;\n  box-shadow: 4px 4px 0 #070707;\n}\n.ds-desktop-nav {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 23px;\n  flex: 1;\n  white-space: nowrap;\n}\n.ds-desktop-nav > a, .ds-nav-dropdown > summary {\n  padding-block: 13px;\n  color: var(--muted);\n  font-weight: 550;\n  cursor: pointer;\n}\n.ds-desktop-nav > a:hover, .ds-nav-dropdown[open] > summary {\n  color: var(--blue);\n}\n.ds-plus {\n  display: inline-block;\n  font-size: 20px;\n  font-weight: 500;\n  margin-inline-start: 5px;\n  transition: transform 0.2s;\n}\n.ds-nav-dropdown[open] .ds-plus {\n  transform: rotate(45deg);\n}\n.ds-mega-menu {\n  position: absolute;\n  inset-block-start: calc(100% + 1px);\n  inset-inline: 0;\n  background: #fff;\n  border: 1px solid #171717;\n  border-radius: 0 0 12px 12px;\n  box-shadow: 0 20px 32px #101b321a;\n  white-space: normal;\n  animation: menu-in 0.25s var(--ease);\n}\n.ds-compact-mega {\n  inset-inline-start: auto;\n  inset-inline-end: 130px;\n  width: 390px;\n  padding: 15px;\n}\n.ds-compact-mega > a {\n  display: block;\n  padding: 15px;\n  border-radius: 6px;\n  font-size: 16px;\n}\n.ds-compact-mega > a:hover {\n  background: var(--pale-blue);\n}\n.ds-compact-mega small {\n  display: block;\n  color: var(--muted);\n  font-size: 14px;\n  margin-block-start: 5px;\n}\n.ds-site-header.ds-scrolled .ds-nav-wrap {\n  border: 0;\n  box-shadow: none;\n  border-radius: 0;\n}\nhtml[lang=\"fa\"] .ds-desktop-nav {\n  gap: 19px;\n}\nhtml[lang=\"fa\"] .ds-desktop-nav > a, html[lang=\"fa\"] .ds-nav-dropdown > summary {\n  font-size: 15px;\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}\n@media (max-width: 760px) { .ds-nav-wrap { width: 100%; } }"
+    },
+    {
+      "name": "Metadata Tag",
+      "kind": "chip",
+      "description": "Extracted metadata tag appearance and CSS states; site behavior remains in the application.",
+      "html": "<div class=\"ds-tags\"><span>Python</span><span>Django</span></div>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-tags {\n  display: flex;\n  gap: 9px;\n  flex-wrap: wrap;\n  margin-block-end: 25px;\n}\n.ds-tags > span {\n  font-size: 13px;\n  color: var(--muted);\n  border: 1px solid var(--line);\n  border-radius: 30px;\n  padding: 3px 12px;\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}",
+      "refersTo": "tag"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "description": "Extracted service card appearance and CSS states; site behavior remains in the application.",
+      "html": "<article class=\"ds-service-card\"><h3><a href=\"#service\">Web development</a></h3><p>Websites and business interfaces.</p></article>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-service-card {\n  padding: 28px 24px;\n  border: 1px solid #292b32;\n  border-radius: 12px;\n  scroll-margin-top: 110px;\n}\n.ds-service-card h3 {\n  font-family: var(--body);\n  font-size: 24px;\n  font-weight: 500;\n  letter-spacing: 0;\n  margin-block-end: 12px;\n}\n.ds-service-card h3 a {\n  color: #004dde;\n  text-decoration: underline;\n  text-underline-offset: 3px;\n}\n.ds-service-card p {\n  font-size: 19px;\n  line-height: 1.5;\n}\nhtml[lang=\"fa\"] .ds-service-card p {\n  line-height: 1.9;\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}",
+      "refersTo": "service-card"
+    },
+    {
+      "name": "Hero Pills",
+      "kind": "chip",
+      "description": "Extracted hero pills appearance and CSS states; site behavior remains in the application.",
+      "html": "<div class=\"ds-hero-pills\"><span>AI-Assisted Engineering</span><span>Specification-Led Development</span><span>Web, Mobile &amp; Automation</span></div>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-hero-pills {\n  display: flex;\n  justify-content: space-around;\n  gap: 24px;\n  margin-block-start: 86px;\n}\n.ds-hero-pills > span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  border-radius: 40px;\n  padding: 8px 18px;\n  font-size: 18px;\n  font-weight: 650;\n  line-height: 1.6;\n}\n.ds-hero-pills > span:nth-child(1) {\n  background: var(--pale-yellow);\n}\n.ds-hero-pills > span:nth-child(2) {\n  background: #d6e1ff;\n}\n.ds-hero-pills > span:nth-child(3) {\n  background: var(--pale-green);\n}\n.ds-hero-pills .ds-icon {\n  width: 23px;\n  height: 23px;\n}\n.ds-hero-pills {\n  animation: hero-in 1.2s var(--ease) both;\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}"
+    },
+    {
+      "name": "Technology Tabs",
+      "kind": "custom",
+      "description": "Extracted technology tabs appearance and CSS states; site behavior remains in the application.",
+      "html": "<div class=\"ds-tech-tabs\" role=\"tablist\" aria-label=\"Technology example\"><button role=\"tab\" aria-selected=\"true\">Frontend</button><button role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Backend</button></div>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-tech-tabs {\n  display: flex;\n  justify-content: center;\n  border-block-end: 1px solid var(--line);\n  gap: 28px;\n}\n.ds-tech-tabs button {\n  border: 0;\n  background: transparent;\n  padding: 15px 18px;\n  color: var(--muted);\n  font-weight: 600;\n  font-size: 17px;\n  border-block-end: 2px solid transparent;\n}\n.ds-tech-tabs button[aria-selected=\"true\"] {\n  border-color: var(--blue);\n  color: var(--blue);\n  background: var(--pale-blue);\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}"
+    },
+    {
+      "name": "FAQ Accordion",
+      "kind": "custom",
+      "description": "Extracted faq accordion appearance and CSS states; site behavior remains in the application.",
+      "html": "<details class=\"ds-faq\"><summary>How do we begin?<span aria-hidden=\"true\">+</span></summary><div><p>Start with a project discussion.</p></div></details>",
+      "css": ":host { font-family: var(--body, Geist, Arial, sans-serif); color: var(--ink, #191c26); } :focus-visible { outline: 3px solid var(--blue, #3555ed); outline-offset: 5px; } input:focus-visible { outline-offset: 2px; }\n.ds-faq {\n  border-block-end: 1px solid var(--line);\n}\n.ds-faq > summary {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 25px;\n  padding: 24px 0;\n  cursor: pointer;\n  font-weight: 650;\n  font-size: 20px;\n}\n.ds-faq > summary > span {\n  font-family: Geist, sans-serif;\n  font-size: 27px;\n  font-weight: 400;\n  transition: transform 0.25s;\n}\n.ds-faq[open] > summary {\n  color: var(--blue);\n}\n.ds-faq[open] > summary > span {\n  transform: rotate(45deg);\n}\n.ds-faq > div {\n  padding-block-end: 24px;\n  padding-inline-end: 50px;\n}\n.ds-faq p {\n  font-size: 18px;\n  color: var(--muted);\n  margin: 0;\n  max-width: 75ch;\n}\n@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }\nbutton, input, select, textarea { font: inherit; }\n@keyframes menu-in {\n  from {\n    clip-path: inset(0 0 100%);\n    transform: translateY(-8px);\n  }\n  to {\n    clip-path: inset(0);\n    transform: translateY(0);\n  }\n}\n@keyframes hero-in {\n  from {\n    transform: translateY(14px);\n    filter: blur(1px);\n  }\n  to {\n    transform: translateY(0);\n    filter: blur(0);\n  }\n}"
+    }
+  ],
+  "narrative": {
+    "northStar": "User-pinned SolGuruz reference",
+    "overview": "Binux follows the user-pinned current SolGuruz reference: a light canvas, blue actions, black outlines and offset shadows, large geometric headings, and pastel supporting surfaces. This records the implemented visual system, without introducing another creative direction.\n\nThe desktop composition is spacious and centered; supporting content uses bordered cards, alternating project panels, and occasional dark bands. Persian keeps the same visual hierarchy with Vazirmatn, logical spacing, and RTL direction.",
+    "keyCharacteristics": [
+      "White canvas with blue actions and black outlines.",
+      "Offset shadows on buttons and floating navigation.",
+      "Geometric English headings and matched Persian hierarchy.",
+      "Pastel proof pills and project imagery; restrained entrance motion."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preserve the pinned SolGuruz visual reference and Binux identity.",
+      "Do use logical inline/block spacing and the Persian font and line-height overrides.",
+      "Do retain visible focus, keyboard controls, and the reduced-motion alternative.",
+      "Do use outlined cards, offset button shadows, and the existing blue/pastel roles consistently."
+    ],
+    "donts": [
+      "Don't invent another visual direction or import the reference company’s branding.",
+      "Don't impose English negative letter spacing on Persian headings.",
+      "Don't force moving marquees or perspective transforms when reduced motion is requested.",
+      "Don't treat illustrative work panels as customer endorsements or commercial metrics."
+    ]
+  }
+}
