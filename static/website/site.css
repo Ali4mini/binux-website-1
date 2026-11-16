@@ -1,9 +1,3 @@
-@font-face {
-  font-family: Vazirmatn;
-  src: url(fonts/vazirmatn.woff2) format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
 :root {
   --blue: #3555ed;
   --blue-deep: #1732a8;
@@ -35,8 +29,8 @@ body {
   line-height: 1.6;
 }
 html[lang="fa"] {
-  --body: Vazirmatn, Arial, sans-serif;
-  --display: Vazirmatn, Arial, sans-serif;
+  --body: Estedad, Arial, sans-serif;
+  --display: Estedad, Arial, sans-serif;
 }
 button,
 input,
@@ -744,6 +738,13 @@ summary::-webkit-details-marker {
   transform: perspective(1000px) rotateY(3deg);
   transition: transform 0.7s var(--ease);
 }
+.project-visual > video {
+  width: 100%;
+  border: 1px solid #222;
+  border-radius: 9px;
+  box-shadow: 0 12px 24px #14203a26;
+  background: #000;
+}
 .project-card:hover .project-visual > img {
   transform: perspective(1000px) rotateY(0);
 }
@@ -1440,6 +1441,13 @@ summary::-webkit-details-marker {
   width: 100%;
   border-radius: 8px;
   border: 1px solid #ccc;
+}
+.project-detail figure video {
+  margin-inline: auto;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #000;
 }
 .project-detail figcaption {
   text-align: center;
