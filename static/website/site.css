@@ -319,7 +319,7 @@ a:hover .arrow {
   color: transparent;
   width: 38px;
   height: 46px;
-  background: url(../images/logo.png) no-repeat -30px center / 185px auto;
+  background: url(../images/logo-dark.png) no-repeat -30px center / 185px auto;
   font-size: 0;
 }
 .desktop-nav {
