@@ -104,7 +104,7 @@
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-black/20 border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
             <div class="flex items-center gap-2">
-                <a href="{% url 'pages:articles' %}" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-slate-700/50 text-xs font-bold text-slate-400 hover:text-emerald-400 hover:border-emerald-500/25 transition-all">← مقالات</a>
+                <a href="{% url 'pages:blog' %}" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-slate-700/50 text-xs font-bold text-slate-400 hover:text-emerald-400 hover:border-emerald-500/25 transition-all">← وبلاگ</a>
                 <button id="theme-toggle" type="button" class="w-10 h-10 rounded-xl border border-slate-700/50 bg-white/[0.02] text-slate-400 hover:text-emerald-400 transition-all" aria-label="تغییر تم سایت"><span id="theme-icon">☾</span></button>
             </div>
 
@@ -114,7 +114,7 @@
                 <a href="{% url 'pages:home' %}" class="hover:text-emerald-400 transition-colors">خانه</a>
                 <a href="{% url 'pages:projects' %}" class="hover:text-emerald-400 transition-colors">پروژه‌ها</a>
                 <a href="{% url 'pages:electronics' %}" class="hover:text-emerald-400 transition-colors">بینوکس الکترونیک</a>
-                <a href="{% url 'pages:articles' %}" class="text-emerald-400">مقاله‌های تکنولوژی</a>
+                <a href="{% url 'pages:blog' %}" class="text-emerald-400">بلاگ</a>
                 <a href="{% url 'pages:about' %}" class="hover:text-emerald-400 transition-colors">درباره ما</a>
             </nav>
 
@@ -127,7 +127,7 @@
                 <a href="{% url 'pages:home' %}" class="px-4 py-3 rounded-xl text-slate-400 hover:bg-white/[0.03] hover:text-emerald-400">خانه</a>
                 <a href="{% url 'pages:projects' %}" class="px-4 py-3 rounded-xl text-slate-400 hover:bg-white/[0.03] hover:text-emerald-400">پروژه‌ها</a>
                 <a href="{% url 'pages:electronics' %}" class="px-4 py-3 rounded-xl text-slate-400 hover:bg-white/[0.03] hover:text-emerald-400">بینوکس الکترونیک</a>
-                <a href="{% url 'pages:articles' %}" class="px-4 py-3 rounded-xl bg-emerald-500/[0.06] text-emerald-400">مقاله‌های تکنولوژی</a>
+                <a href="{% url 'pages:blog' %}" class="px-4 py-3 rounded-xl bg-emerald-500/[0.06] text-emerald-400">بلاگ</a>
                 <a href="{% url 'pages:about' %}" class="px-4 py-3 rounded-xl text-slate-400 hover:bg-white/[0.03] hover:text-emerald-400">درباره ما</a>
             </nav>
             <a href="tel:09120000000" class="sm:hidden mt-3 block text-center px-4 py-3 rounded-xl border border-emerald-500/20 text-emerald-400 text-xs font-bold">ارتباط با ما</a>
@@ -140,7 +140,7 @@
                 <ol class="flex flex-wrap items-center gap-2">
                     <li><a href="{% url 'pages:home' %}" class="hover:text-emerald-400 transition-colors">خانه</a></li>
                     <li aria-hidden="true">/</li>
-                    <li><a href="{% url 'pages:articles' %}" class="hover:text-emerald-400 transition-colors">مقاله‌های تکنولوژی</a></li>
+                    <li><a href="{% url 'pages:blog' %}" class="hover:text-emerald-400 transition-colors">بلاگ</a></li>
                     <li aria-hidden="true">/</li>
                     <li class="text-slate-400" aria-current="page">{{ article.title }}</li>
                 </ol>
@@ -209,7 +209,7 @@
                     <p class="text-[10px] text-emerald-400 font-bold tracking-[.18em]">KEEP READING</p>
                     <h2 class="mt-2 text-xl font-black">مقالات مرتبط</h2>
                 </div>
-                <a href="{% url 'pages:articles' %}" class="text-xs font-bold text-slate-500 hover:text-emerald-400 transition-colors">همه مقاله‌ها ←</a>
+                <a href="{% url 'pages:blog' %}" class="text-xs font-bold text-slate-500 hover:text-emerald-400 transition-colors">همه مقاله‌ها ←</a>
             </div>
             <div class="grid gap-4 md:grid-cols-3">
                 {% for item in related_articles %}

@@ -14,7 +14,7 @@ SITEMAP_PATHS = (
     ("pages:home", "weekly", "1.0"),
     ("pages:services", "monthly", "0.9"),
     ("pages:projects", "weekly", "0.8"),
-    ("pages:articles", "weekly", "0.8"),
+    ("pages:blog", "weekly", "0.8"),
     ("pages:about", "monthly", "0.6"),
 )
 
