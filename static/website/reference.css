@@ -1820,3 +1820,235 @@ html[lang="fa"] .hero-pills > span {
     transition: opacity 100ms ease-in;
   }
 }
+
+/* Shared light/dark theme for every page rendered by the website templates. */
+:root {
+  color-scheme: light;
+  --page: #ffffff;
+  --surface: #ffffff;
+  --surface-raised: #f5f7ff;
+  --ink: #191c26;
+  --muted: #535b6b;
+  --line: #dfe2e8;
+  --outline: #191c26;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #090b10;
+  --surface: #11151d;
+  --surface-raised: #191f2a;
+  --ink: #edf0f6;
+  --muted: #b1bac9;
+  --line: #343c4a;
+  --outline: #697386;
+  --pale-blue: #1a2947;
+  --pale-green: #153426;
+  --blue: #8ca5ff;
+  --blue-deep: #536ed7;
+}
+html[data-theme="dark"] body {
+  color: var(--ink);
+  background: var(--page);
+}
+html[data-theme="dark"] h1,
+html[data-theme="dark"] .brand,
+html[data-theme="dark"] .language,
+html[data-theme="dark"] .desktop-nav > a,
+html[data-theme="dark"] .nav-dropdown > summary,
+html[data-theme="dark"] .nav-dropdown[open] > summary,
+html[data-theme="dark"] .nav-dropdown[open] > summary::before,
+html[data-theme="dark"] .service-index a:hover,
+html[data-theme="dark"] .service-index a.active,
+html[data-theme="dark"] .project-form ::placeholder,
+html[data-theme="dark"] .contact-note p {
+  color: var(--ink);
+}
+html[data-theme="dark"] .nav-wrap,
+html[data-theme="dark"] .site-header.scrolled .nav-shell,
+html[data-theme="dark"] .mega-menu,
+html[data-theme="dark"] .preview-tabs,
+html[data-theme="dark"] .preview-proof,
+html[data-theme="dark"] .preview-link:hover,
+html[data-theme="dark"] .resource-menu-links > a:hover,
+html[data-theme="dark"] .company-menu-columns a:hover,
+html[data-theme="dark"] .mobile-nav,
+html[data-theme="dark"] .mobile-menu,
+html[data-theme="dark"] .service-card,
+html[data-theme="dark"] .project-card,
+html[data-theme="dark"] .article-list article,
+html[data-theme="dark"] .faq,
+html[data-theme="dark"] .fit-panel,
+html[data-theme="dark"] .project-form,
+html[data-theme="dark"] .team-monogram,
+html[data-theme="dark"] .contact-drawer,
+html[data-theme="dark"] .search-dialog,
+html[data-theme="dark"] .project-form input,
+html[data-theme="dark"] .project-form select,
+html[data-theme="dark"] .project-form textarea,
+html[data-theme="dark"] .search-dialog input,
+html[data-theme="dark"] .draft-result .draft-text,
+html[data-theme="dark"] .flow-node,
+html[data-theme="dark"] .process-grid,
+html[data-theme="dark"] .technology-frame [role="tabpanel"],
+html[data-theme="dark"] .technology-frame .tech-grid > span {
+  color: var(--ink);
+  background-color: var(--surface);
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .nav-wrap,
+html[data-theme="dark"] .site-header.scrolled .nav-shell,
+html[data-theme="dark"] .mega-menu,
+html[data-theme="dark"] .service-card,
+html[data-theme="dark"] .project-card,
+html[data-theme="dark"] .article-list article,
+html[data-theme="dark"] .faq,
+html[data-theme="dark"] .fit-panel,
+html[data-theme="dark"] .project-form,
+html[data-theme="dark"] .team-monogram,
+html[data-theme="dark"] .contact-drawer,
+html[data-theme="dark"] .search-dialog,
+html[data-theme="dark"] .flow-node,
+html[data-theme="dark"] .technology-frame .tech-grid > span {
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .nav-wrap {
+  box-shadow: 4px 4px 0 #000;
+}
+html[data-theme="dark"] .nav-dropdown[open] > summary::before,
+html[data-theme="dark"] .mega-sidebar,
+html[data-theme="dark"] .mega-bottom,
+html[data-theme="dark"] .technology-frame [role="tabpanel"],
+html[data-theme="dark"] .fit-panel,
+html[data-theme="dark"] .process-section,
+html[data-theme="dark"] .cta-section,
+html[data-theme="dark"] .contact-note {
+  background-color: var(--surface-raised);
+}
+html[data-theme="dark"] .preview-content,
+html[data-theme="dark"] .preview-content.blue,
+html[data-theme="dark"] .preview-content.mint,
+html[data-theme="dark"] .grouped-preview,
+html[data-theme="dark"] .preview-menu,
+html[data-theme="dark"] .preview-menu.blue-tone,
+html[data-theme="dark"] .preview-menu.mint-tone,
+html[data-theme="dark"] .company-preview,
+html[data-theme="dark"] .resource-preview,
+html[data-theme="dark"] .mobile-category-panel,
+html[data-theme="dark"] .mobile-category-panel.blue-tone,
+html[data-theme="dark"] .mobile-category-panel.mint-tone,
+html[data-theme="dark"] .mobile-category-panel.peach-tone {
+  color: var(--ink);
+  background-color: var(--surface-raised);
+}
+html[data-theme="dark"] .nav-dropdown > summary::before,
+html[data-theme="dark"] .nav-dropdown:has(.company-preview)[open] > summary::before,
+html[data-theme="dark"] .nav-dropdown:has(.blue-tone)[open] > summary::before,
+html[data-theme="dark"] .nav-dropdown:has(.mint-tone)[open] > summary::before {
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .nav-contact,
+html[data-theme="dark"] .button:not(.primary),
+html[data-theme="dark"] .skip {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .button:not(.primary) {
+  box-shadow: 0 4px 0 #000;
+}
+html[data-theme="dark"] .button:not(.primary):hover {
+  background: var(--surface-raised);
+}
+html[data-theme="dark"] .desktop-nav > a,
+html[data-theme="dark"] .nav-dropdown > summary,
+html[data-theme="dark"] .language,
+html[data-theme="dark"] .text-link,
+html[data-theme="dark"] .quote-link,
+html[data-theme="dark"] .service-card h3 a,
+html[data-theme="dark"] .service-index a:hover,
+html[data-theme="dark"] .service-index a.active {
+  color: #9bb2ff;
+}
+html[data-theme="dark"] .service-index a,
+html[data-theme="dark"] .includes-list li,
+html[data-theme="dark"] .related-services a,
+html[data-theme="dark"] .footer-intro,
+html[data-theme="dark"] .footer-bottom {
+  border-color: var(--line);
+}
+html[data-theme="dark"] .service-index a:hover,
+html[data-theme="dark"] .service-index a.active,
+html[data-theme="dark"] .search-results > a:hover {
+  background: var(--surface-raised);
+}
+html[data-theme="dark"] .technology-frame .tech-tabs,
+html[data-theme="dark"] .technology-frame .tech-tabs > button[aria-selected="true"] {
+  color: var(--ink);
+}
+html[data-theme="dark"] .project-card,
+html[data-theme="dark"] .article-list article,
+html[data-theme="dark"] .faq,
+html[data-theme="dark"] .project-form,
+html[data-theme="dark"] .team-monogram,
+html[data-theme="dark"] .technology-frame [role="tabpanel"] {
+  background-color: var(--surface);
+}
+html[data-theme="dark"] .principle {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .technology-frame .tech-tabs {
+  background: #24395f;
+}
+html[data-theme="dark"] .technology-frame .tech-tabs > button[aria-selected="true"] {
+  background: var(--surface);
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .menu-toggle {
+  border-color: var(--outline);
+  box-shadow: 0 3px 0 #000;
+}
+html[data-theme="dark"] .menu-toggle span {
+  background: var(--ink);
+}
+html[data-theme="dark"] .project-card .project-copy,
+html[data-theme="dark"] .article-list article > div:last-child,
+html[data-theme="dark"] .faq > summary,
+html[data-theme="dark"] .faq > div {
+  color: var(--ink);
+}
+html[data-theme="dark"] .project-detail figure {
+  border-color: var(--outline);
+  background: var(--surface-raised);
+}
+html[data-theme="dark"] .project-detail figure img,
+html[data-theme="dark"] .project-detail figure video {
+  border-color: var(--outline);
+}
+html[data-theme="dark"] .search-dialog input,
+html[data-theme="dark"] .project-form input,
+html[data-theme="dark"] .project-form select,
+html[data-theme="dark"] .project-form textarea {
+  background: #0b0e14;
+  border-color: #697386;
+  color: var(--ink);
+}
+html[data-theme="dark"] .theme-toggle .theme-light-icon {
+  display: none;
+}
+html[data-theme="dark"] .theme-toggle .theme-dark-icon {
+  display: block;
+}
+.theme-toggle .theme-dark-icon {
+  display: none;
+}
+@media (max-width: 1199px) {
+  html[data-theme="dark"] .mobile-nav {
+    color: var(--ink);
+    background: var(--surface);
+  }
+  html[data-theme="dark"] body.mobile-menu-open::before {
+    background: #090b10;
+  }
+}

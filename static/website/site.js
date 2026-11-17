@@ -5,6 +5,29 @@
     ...root.querySelectorAll(selector),
   ];
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const themeButton = $(".theme-toggle");
+  const themeColor = $("meta[name=theme-color]");
+  const setTheme = (theme, save = false) => {
+    document.documentElement.dataset.theme = theme;
+    themeButton.setAttribute("aria-pressed", String(theme === "dark"));
+    themeButton.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
+    );
+    themeColor.content = theme === "dark" ? "#090b10" : "#ffffff";
+    if (save) {
+      try {
+        localStorage.setItem("binux-theme", theme);
+      } catch {}
+    }
+  };
+  setTheme(document.documentElement.dataset.theme || "light");
+  themeButton.addEventListener("click", () =>
+    setTheme(
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark",
+      true,
+    ),
+  );
   const header = $("#site-header");
   let scrollQueued = false;
   const updateHeader = () => {
