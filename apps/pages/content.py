@@ -1,5 +1,7 @@
 """Reviewed public facts and original bilingual website copy. No invented social proof."""
 
+CONTACT_EMAIL = 'binuxtech.co@gmail.com'
+
 def service(slug, icon, en, fa):
     keys = ['title', 'description', 'intro', 'includes', 'fit']
     return {'slug': slug, 'icon': icon, 'en': dict(zip(keys, en)), 'fa': dict(zip(keys, fa))}
@@ -139,7 +141,7 @@ CONTENT = {
     'service_includes': 'What We Can Build With You', 'service_fit': 'Is This the Right Fit?', 'related': 'Explore Related Services',
     'work_page_intro': 'Publicly shareable engineering projects. Product concepts and demo data are labeled; private client information stays private.',
     'insights_heading': 'Notes for planning better software projects', 'insights_intro': 'Short, practical guides to defining what you need and making sound implementation choices.', 'read': 'Read the guide', 'back': 'Back to articles',
-    'privacy_heading': 'Privacy & Contact', 'privacy_p': 'This website does not use analytics, advertising trackers or a contact database. Search runs in your browser. The project and consultation forms prepare email drafts; form content is not submitted to this website. If you send an email, your email provider and ours process it to deliver and respond to your inquiry. The hosting provider may retain ordinary access logs. Contact alireza.4mini@gmail.com for questions about information you have shared with us.',
+    'privacy_heading': 'Privacy & Contact', 'privacy_p': 'This website does not use analytics, advertising trackers or a contact database. Search runs in your browser. The project and consultation forms prepare email drafts; form content is not submitted to this website. If you send an email, your email provider and ours process it to deliver and respond to your inquiry. The hosting provider may retain ordinary access logs. Contact binuxtech.co@gmail.com for questions about information you have shared with us.',
     'footer_tag': 'Software engineering for the way you work.', 'rights': 'Binux. All rights reserved.', 'privacy': 'Privacy', 'top': 'Back to top',
     'titles': {'home': 'Custom Software, Web & CRM Systems', 'services': 'Software Development Services', 'work': 'Software Projects', 'about': 'About the Binux Team', 'process': 'Our Delivery Process', 'contact': 'Contact Us', 'insights': 'Engineering Insights', 'privacy': 'Privacy & Data Policy'},
     'descriptions': {
@@ -190,7 +192,7 @@ CONTENT = {
     'service_includes': 'آنچه با هم می‌سازیم', 'service_fit': 'آیا این خدمت مناسب شماست؟', 'related': 'خدمات مرتبط',
     'work_page_intro': 'پروژه‌های مهندسی قابل معرفی عمومی. نماهای مفهومی و داده‌های نمایشی مشخص شده‌اند و اطلاعات خصوصی مشتریان نمایش داده نمی‌شود.',
     'insights_heading': 'یادداشت‌هایی برای برنامه‌ریزی بهتر پروژه‌های نرم‌افزاری', 'insights_intro': 'راهنماهای کوتاه و کاربردی برای روشن‌کردن نیازها و انتخاب مسیر مناسب پیاده‌سازی.', 'read': 'خواندن مقاله', 'back': 'بازگشت به مقاله‌ها',
-    'privacy_heading': 'حریم خصوصی و تماس', 'privacy_p': 'این وب‌سایت از ابزار تحلیل رفتار، ردیاب تبلیغاتی یا پایگاه داده فرم تماس استفاده نمی‌کند. جست‌وجو در مرورگر شما انجام می‌شود. فرم پروژه و مشاوره، پیش‌نویس ایمیل آماده می‌کنند و محتوای فرم به وب‌سایت ارسال نمی‌شود. اگر ایمیل بفرستید، سرویس ایمیل شما و ما اطلاعات را برای ارسال و پاسخ به درخواست پردازش می‌کنند. ارائه‌دهنده میزبانی ممکن است گزارش‌های معمول دسترسی را نگه دارد. برای پرسش درباره اطلاعاتی که با ما به اشتراک گذاشته‌اید، به alireza.4mini@gmail.com ایمیل بزنید.',
+    'privacy_heading': 'حریم خصوصی و تماس', 'privacy_p': 'این وب‌سایت از ابزار تحلیل رفتار، ردیاب تبلیغاتی یا پایگاه داده فرم تماس استفاده نمی‌کند. جست‌وجو در مرورگر شما انجام می‌شود. فرم پروژه و مشاوره، پیش‌نویس ایمیل آماده می‌کنند و محتوای فرم به وب‌سایت ارسال نمی‌شود. اگر ایمیل بفرستید، سرویس ایمیل شما و ما اطلاعات را برای ارسال و پاسخ به درخواست پردازش می‌کنند. ارائه‌دهنده میزبانی ممکن است گزارش‌های معمول دسترسی را نگه دارد. برای پرسش درباره اطلاعاتی که با ما به اشتراک گذاشته‌اید، به binuxtech.co@gmail.com ایمیل بزنید.',
     'footer_tag': 'مهندسی نرم‌افزار، متناسب با روش کار شما.', 'rights': 'بینوکس. همه حقوق محفوظ است.', 'privacy': 'حریم خصوصی', 'top': 'بازگشت به بالا',
     'titles': {'home': 'نرم‌افزار اختصاصی، وب و CRM', 'services': 'خدمات توسعه نرم‌افزار', 'work': 'نمونه‌کارهای نرم‌افزاری', 'about': 'درباره تیم بینوکس', 'process': 'فرایند تحویل پروژه', 'contact': 'شروع پروژه', 'insights': 'یادداشت‌های مهندسی', 'privacy': 'حریم خصوصی و داده‌ها'},
     'descriptions': {

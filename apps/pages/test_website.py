@@ -48,5 +48,5 @@ class BilingualWebsiteTests(SimpleTestCase):
     def test_email_form_explains_delivery_and_posts_are_not_accepted(self):
         response = self.client.get('/en/contact/')
         self.assertContains(response, 'Your message is sent only when you send that email.')
-        self.assertContains(response, 'mailto:alireza.4mini@gmail.com')
+        self.assertContains(response, 'mailto:binuxtech.co@gmail.com')
         self.assertEqual(self.client.post('/en/contact/', {'brief': 'Do not store this'}).status_code, 405)

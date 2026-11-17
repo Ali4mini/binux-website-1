@@ -368,7 +368,7 @@
         ? "درخواست مشاوره پروژه"
         : "Binux project consultation request";
       serviceForm.querySelector('[role="status"]').textContent = serviceForm.dataset.note;
-      location.href = `mailto:alireza.4mini@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      location.href = `mailto:${document.body.dataset.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
 
@@ -401,7 +401,7 @@
         "Binux project inquiry" + (serviceName ? ": " + serviceName : "");
       draft.value = `${name}\n${email}\n${serviceName}\n\n${brief}`;
       $(".draft-result").hidden = false;
-      location.href = `mailto:alireza.4mini@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(draft.value)}`;
+      location.href = `mailto:${document.body.dataset.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(draft.value)}`;
     });
     $("#brief").addEventListener("input", () =>
       $("#brief").setCustomValidity(""),
