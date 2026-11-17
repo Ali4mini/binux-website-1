@@ -42,7 +42,7 @@ The reference fidelity revision uses the exact openly licensed Panamera and Inte
 
 `static/website/reference.css` loads after `site.css` and owns the reference-matched component geometry and motion. The original Manrope/Geist substitutes have been removed. Navigation categories and tool previews are in `apps/pages/navigation.py`. Existing unlocalized legacy article and service-detail URLs remain compatible; new navigation stays within translated pages.
 
-The contact form **prepares a mailto draft**, not a server-sent message. It validates required fields, preselects the requested service, exposes the composed text and offers clipboard fallback. No submission database, SMTP delivery or false success message is present. Configure a real delivery backend separately if server-side submission is required.
+The contact and services consultation forms **prepare a mailto draft**, not a server-sent message. The consultation form asks for a name, phone and message; it validates required fields and opens a draft addressed to the public team email. The visitor must send that email from their mail app. Form contents are not posted to this website or stored in a database, and no SMTP delivery or false success message is present. Configure a real delivery backend separately if server-side submission is required.
 
 ## Deployment state
 

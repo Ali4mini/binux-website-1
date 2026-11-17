@@ -352,6 +352,26 @@
   }
   animationVisibility();
 
+  const serviceForm = $("#service-consultation-form");
+  if (serviceForm) {
+    serviceForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!serviceForm.reportValidity()) return;
+      const data = new FormData(serviceForm);
+      const body = [
+        `${data.get("name")}`,
+        `${data.get("phone")}`,
+        "",
+        `${data.get("message")}`,
+      ].join("\n");
+      const subject = document.documentElement.lang === "fa"
+        ? "درخواست مشاوره پروژه"
+        : "Binux project consultation request";
+      serviceForm.querySelector('[role="status"]').textContent = serviceForm.dataset.note;
+      location.href = `mailto:alireza.4mini@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+
   const form = $("#project-form");
   if (form) {
     const service = $("#service");
