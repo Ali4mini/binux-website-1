@@ -41,7 +41,7 @@ def legacy(request, destination='home'):
 
 
 def sitemap(request):
-    paths = []
+    paths = [reverse('pages:blog')]
     for lang in CONTENT:
         for page in ['home', 'services', 'work', 'about', 'process', 'contact', 'insights', 'privacy']:
             paths.append(reverse('website:' + page, kwargs={'lang': lang}))

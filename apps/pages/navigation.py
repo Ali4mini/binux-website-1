@@ -60,4 +60,5 @@ def navigation(lang):
             'nav_note':text('Web, mobile & business software · Engineer-led delivery','وب، موبایل و نرم‌افزار کسب‌وکار · توسعه با مسئولیت مهندسان'),
             'nav_support':text('Clear scope · Direct communication · Technical handover','محدوده روشن · ارتباط مستقیم · تحویل فنی'),
             'nav_team':text('Meet the Team','آشنایی با تیم'),'nav_who':text('WHO WE ARE','درباره ما'),'nav_partner':text('WORK WITH US','همکاری با ما'),'nav_approach':text('OUR APPROACH','روش ما'),
-            'nav_plan':text('Discuss Your Requirements','گفت‌وگو درباره نیازها'),'nav_about':text('About Us','درباره ما'),'nav_languages':text('Persian & English','فارسی و انگلیسی')}
+            'nav_plan':text('Discuss Your Requirements','گفت‌وگو درباره نیازها'),'nav_about':text('About Us','درباره ما'),'nav_languages':text('Persian & English','فارسی و انگلیسی'),
+            'nav_blog':text('Blog','بلاگ')}
