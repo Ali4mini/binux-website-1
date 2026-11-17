@@ -7,7 +7,6 @@
  <details><summary>{{ c.company }}<span aria-hidden="true">+</span></summary><div class="mobile-category-panel peach-tone"><a href="{% url 'website:about' lang=lang %}">{{ c.about }}</a><a href="{% url 'website:process' lang=lang %}">{{ c.process }}</a><a href="{% url 'website:contact' lang=lang %}">{{ c.contact }}</a></div></details>
  </div>
  <a class="mobile-pricing" href="{% url 'pages:blog' %}"><svg class="icon"><use href="#i-bot"/></svg>{{ nav_blog }}</a>
- <a class="mobile-pricing" href="{% url 'website:contact' lang=lang %}"><svg class="icon"><use href="#i-system"/></svg>{{ nav_quote }}</a>
  <div class="mobile-quick-contact"><a class="button" href="mailto:{{ email }}"><svg class="icon"><use href="#i-mail"/></svg>{{ c.email }}</a><a class="button" href="{% url 'website:contact' lang=lang %}"><svg class="icon"><use href="#i-code"/></svg>{{ c.contact }}</a></div>
  <a class="button primary mobile-contact-action" href="{% url 'website:contact' lang=lang %}">{{ c.contact }}</a>
 </nav>
