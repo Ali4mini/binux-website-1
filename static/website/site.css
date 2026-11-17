@@ -556,6 +556,23 @@ summary::-webkit-details-marker {
   width: 23px;
   height: 23px;
 }
+.brand-film {
+  padding: 48px 24px;
+  background: #030712;
+}
+.brand-film__frame {
+  width: min(var(--container), 100%);
+  aspect-ratio: 16 / 9;
+  margin-inline: auto;
+  overflow: hidden;
+  background: #030712;
+}
+.brand-film video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .work-marquee {
   margin-block: 130px 110px;
   text-align: center;
@@ -2424,6 +2441,9 @@ html[lang="fa"] .service-card p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .brand-film {
+    display: none;
   }
   *,
   *:before,
