@@ -55,7 +55,7 @@ def navigation(lang):
     logos = {name:'website/technology/'+slug+'.svg' for name,slug in [('React','react'),('React Native','react'),('JavaScript','javascript'),('TypeScript','typescript'),('Expo','expo'),('Tailwind CSS','tailwindcss'),('React Router','reactrouter'),('Vite','vite'),('Python','python'),('Django','django'),('PostgreSQL','postgresql'),('Redis','redis'),('SQLite','sqlite'),('Docker','docker'),('Linux','linux'),('Google Cloud','googlecloud'),('Telegram','telegram'),('GitHub Actions','githubactions'),('Git','git')]}
     return {'service_groups':groups,
             'technology_groups':[{'key':key,'title':text(en,persian),'tools':[{'title':tool,'logo':logos.get(tool,'')} for tool in tools]} for key,en,persian,tools in tech],
-            'nav_work':text('Case Studies','نمونه‌کارها'),'nav_quote':text('Pricing','برآورد'),
+            'nav_work':text('Case Studies','نمونه‌کارها'),
             'nav_view':text('View all services →','همه خدمات ←'),'nav_start':text('Start a Project','شروع پروژه'),
             'nav_note':text('Web, mobile & business software · Engineer-led delivery','وب، موبایل و نرم‌افزار کسب‌وکار · توسعه با مسئولیت مهندسان'),
             'nav_support':text('Clear scope · Direct communication · Technical handover','محدوده روشن · ارتباط مستقیم · تحویل فنی'),

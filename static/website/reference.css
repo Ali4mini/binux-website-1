@@ -228,18 +228,6 @@ h3 {
   text-align: center;
   color: #191c26;
 }
-.quote-link {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #3859ff;
-  font-size: 16px;
-  font-weight: 500;
-}
-.quote-link .icon {
-  height: 23px;
-  width: 23px;
-}
 .nav-contact {
   min-height: 48px;
   padding: 11px 24px;
@@ -987,9 +975,6 @@ h3 {
   .nav-contact {
     padding-inline: 16px;
   }
-  .nav-actions .quote-link {
-    font-size: 14px;
-  }
   .desktop-nav > details > summary {
     font-size: 15px;
   }
@@ -1061,8 +1046,7 @@ h3 {
     min-width: 0;
     font-size: 30px;
   }
-  .nav-actions .nav-contact,
-  .nav-actions .quote-link {
+  .nav-actions .nav-contact {
     display: none;
   }
   .site-header.scrolled {
@@ -1963,7 +1947,6 @@ html[data-theme="dark"] .desktop-nav > a,
 html[data-theme="dark"] .nav-dropdown > summary,
 html[data-theme="dark"] .language,
 html[data-theme="dark"] .text-link,
-html[data-theme="dark"] .quote-link,
 html[data-theme="dark"] .service-card h3 a,
 html[data-theme="dark"] .service-index a:hover,
 html[data-theme="dark"] .service-index a.active {
