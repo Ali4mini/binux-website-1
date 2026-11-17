@@ -2,7 +2,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_safe
-from .content import CONTENT, SERVICES, PROJECTS, ARTICLES
+from .content import CONTACT_EMAIL, CONTENT, SERVICES, PROJECTS, ARTICLES
 from .navigation import navigation
 
 
@@ -26,7 +26,7 @@ def localized(request, lang, page='home', slug=None):
         route_args['slug'] = slug
     language_url = reverse('website:' + page, kwargs=route_args)
     title = detail['title'] if detail else c['titles'][page]
-    context = {'lang': lang, 'c': c, 'services': services, 'projects': projects,
+    context = {'lang': lang, 'c': c, 'email': CONTACT_EMAIL, 'services': services, 'projects': projects,
                'articles': articles, 'detail': detail, 'page': page,
                'language_url': language_url, 'title': title,
                'canonical': 'https://binux.tech' + request.path,
