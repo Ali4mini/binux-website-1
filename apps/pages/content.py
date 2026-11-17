@@ -104,7 +104,7 @@ ARTICLES = [
 CONTENT = {
 'en': {
     'brand': 'Binux', 'other_language': 'فارسی', 'skip': 'Skip to content', 'home': 'Home',
-    'services': 'Services', 'ai': 'Software Engineering', 'work': 'Our Work', 'resources': 'Resources', 'company': 'Company', 'contact': 'Contact Us', 'process': 'How We Work', 'about': 'About Binux', 'insights': 'Insights',
+    'services': 'Services', 'work': 'Our Work', 'company': 'Company', 'contact': 'Contact Us', 'process': 'How We Work', 'about': 'About Binux', 'insights': 'Insights',
     'menu': 'Open navigation', 'close': 'Close', 'search': 'Search the website', 'search_hint': 'Search services, projects and insights…', 'no_results': 'No matches. Try “web”, “CRM” or “automation”.',
     'hero': 'Software built around the way your business works',
     'hero_p': 'Binux builds websites, mobile apps and business systems, connecting Python backends to web and mobile products.',
@@ -155,7 +155,7 @@ CONTENT = {
 },
 'fa': {
     'brand': 'بینوکس', 'other_language': 'English', 'skip': 'رفتن به محتوای اصلی', 'home': 'خانه',
-    'services': 'خدمات', 'ai': 'مهندسی نرم‌افزار', 'work': 'نمونه‌کارها', 'resources': 'منابع', 'company': 'بینوکس', 'contact': 'تماس با ما', 'process': 'روش کار ما', 'about': 'درباره بینوکس', 'insights': 'یادداشت‌ها',
+    'services': 'خدمات', 'work': 'نمونه‌کارها', 'company': 'بینوکس', 'contact': 'تماس با ما', 'process': 'روش کار ما', 'about': 'درباره بینوکس', 'insights': 'یادداشت‌ها',
     'menu': 'باز کردن منو', 'close': 'بستن', 'search': 'جست‌وجو در سایت', 'search_hint': 'جست‌وجوی خدمات، پروژه‌ها و یادداشت‌ها…', 'no_results': 'نتیجه‌ای پیدا نشد. «وب»، «CRM» یا «اتوماسیون» را امتحان کنید.',
     'hero': 'نرم‌افزاری متناسب با شیوه کار شما',
     'hero_p': 'بینوکس وب‌سایت، اپلیکیشن موبایل، سامانه‌های کسب‌وکار و اتوماسیون فرایند می‌سازد. مهندسان ما از معماری و بازبینی کد تا تحویل محصول مسئولیت کار را بر عهده دارند.',
