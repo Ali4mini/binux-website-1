@@ -270,6 +270,10 @@ a:hover .arrow {
   gap: 10px;
   align-items: center;
 }
+.topbar .topbar-phone {
+  font-size: 16px;
+  font-weight: 800;
+}
 .topbar .icon {
   width: 15px;
   height: 15px;
