@@ -28,6 +28,38 @@
       true,
     ),
   );
+  const brandFilm = $(".brand-film");
+  const brandVideo = $(".brand-film video");
+  if (brandVideo && brandFilm) {
+    let filmVisible = false;
+    const startFilm = () => {
+      if (reduced.matches || !filmVisible) return;
+      const playback = brandVideo.play();
+      if (playback && typeof playback.then === "function") {
+        playback.then(() => brandFilm.classList.add("is-playing"))
+          .catch(() => brandFilm.classList.remove("is-playing"));
+      }
+    };
+    const stopFilm = () => {
+      brandVideo.pause();
+      brandFilm.classList.remove("is-playing");
+    };
+    if ("IntersectionObserver" in window) {
+      const filmObserver = new IntersectionObserver(([entry]) => {
+        filmVisible = entry.isIntersecting;
+        if (filmVisible) startFilm();
+        else stopFilm();
+      }, { rootMargin: "160px 0px", threshold: 0.1 });
+      filmObserver.observe(brandFilm);
+    } else {
+      filmVisible = true;
+      startFilm();
+    }
+    reduced.addEventListener("change", () => {
+      if (reduced.matches) stopFilm();
+      else startFilm();
+    });
+  }
   const header = $("#site-header");
   let scrollQueued = false;
   const updateHeader = () => {

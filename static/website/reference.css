@@ -1748,7 +1748,7 @@ html[lang="fa"] .hero-pills > span {
   .mobile-category-panel > a {
     padding-inline: 10px !important;
   }
-  .mobile-nav > a.mobile-pricing {
+  .mobile-nav > a.mobile-blog-link {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1760,7 +1760,7 @@ html[lang="fa"] .hero-pills > span {
     margin-top: 24px;
     border-bottom: 1px solid #dfe2e8;
   }
-  .mobile-pricing .icon {
+  .mobile-blog-link .icon {
     width: 23px;
     height: 23px;
   }
@@ -2034,4 +2034,37 @@ html[data-theme="dark"] .theme-toggle .theme-dark-icon {
   html[data-theme="dark"] body.mobile-menu-open::before {
     background: #090b10;
   }
+}
+
+/* Final header overrides: keep the outline equal before and after scroll. */
+.nav-wrap,
+.site-header.scrolled .nav-wrap {
+  border: 1px solid #171717;
+  border-radius: 4px;
+  box-shadow: none;
+}
+.site-header.scrolled .nav-shell {
+  border: 0;
+}
+.brand-mark {
+  display: inline-block;
+  width: 116px;
+  height: 34px;
+  flex: 0 0 116px;
+  background: url("../images/logo-dark.svg") no-repeat center / contain;
+}
+@media (max-width: 760px) {
+  .brand-mark {
+    width: 100px;
+    height: 30px;
+    flex-basis: 100px;
+  }
+}
+html[data-theme="dark"] .nav-wrap,
+html[data-theme="dark"] .site-header.scrolled .nav-wrap {
+  border-color: var(--outline);
+  box-shadow: none;
+}
+html[data-theme="dark"] .brand-mark {
+  background-image: url("../images/logo-light.svg");
 }

@@ -1970,7 +1970,9 @@ html[lang="fa"] .service-card p {
     font-size: 30px;
   }
   .brand-mark {
-    width: 34px;
+    width: 100px;
+    height: 30px;
+    flex-basis: 100px;
   }
   .nav-actions {
     gap: 14px;
@@ -2442,9 +2444,6 @@ html[lang="fa"] .service-card p {
   html {
     scroll-behavior: auto;
   }
-  .brand-film {
-    display: none;
-  }
   *,
   *:before,
   *:after {
@@ -2475,3 +2474,111 @@ html[lang="fa"] .service-card p {
     width: 100%;
   }
 }
+
+
+/* Issue #9: one even outline in both header states. */
+.nav-wrap,
+.site-header.scrolled .nav-wrap {
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: none;
+}
+.site-header.scrolled .nav-shell {
+  border: 0;
+}
+.brand-mark {
+  width: 116px;
+  height: 34px;
+  flex: 0 0 116px;
+  background: url("../images/logo-dark.svg") no-repeat center / contain;
+}
+.mobile-blog-link { display: flex; align-items: center; gap: 10px; }
+
+/* Issue #13: complete dark palette for the shared bilingual website. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #eef2f8;
+  --muted: #aab4c4;
+  --line: #30394a;
+  --pale-blue: #17243b;
+  --pale-green: #10251f;
+  --surface: #111722;
+  --surface-raised: #171f2d;
+}
+html[data-theme="dark"] body {
+  background: #090d14;
+  color: #eef2f8;
+}
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .site-header.scrolled .nav-shell {
+  background: #090d14;
+}
+html[data-theme="dark"] .nav-wrap,
+html[data-theme="dark"] .mobile-nav,
+html[data-theme="dark"] .mega-menu,
+html[data-theme="dark"] .search-dialog,
+html[data-theme="dark"] .contact-drawer,
+html[data-theme="dark"] .project-form,
+html[data-theme="dark"] .fit-panel,
+html[data-theme="dark"] .service-card,
+html[data-theme="dark"] .project-card,
+html[data-theme="dark"] .faq-item,
+html[data-theme="dark"] .related-services > a,
+html[data-theme="dark"] .project-screenshot-grid figure {
+  color: #eef2f8;
+  background-color: #111722;
+  border-color: #30394a;
+}
+html[data-theme="dark"] .mega-sidebar,
+html[data-theme="dark"] .process-section,
+html[data-theme="dark"] .mobile-category-panel,
+html[data-theme="dark"] .search-result {
+  color: #eef2f8;
+  background-color: #141d2a;
+}
+html[data-theme="dark"] .nav-wrap,
+html[data-theme="dark"] .site-header.scrolled .nav-wrap {
+  border-color: #3b4659;
+}
+html[data-theme="dark"] .brand,
+html[data-theme="dark"] .desktop-nav > a,
+html[data-theme="dark"] .nav-dropdown > summary,
+html[data-theme="dark"] .nav-actions .icon-button,
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .inner-hero h1,
+html[data-theme="dark"] .inner-hero h2,
+html[data-theme="dark"] .project-copy h3,
+html[data-theme="dark"] .service-card h3,
+html[data-theme="dark"] .faq-item summary,
+html[data-theme="dark"] .company-menu-columns a,
+html[data-theme="dark"] .mobile-nav a {
+  color: #eef2f8;
+}
+html[data-theme="dark"] p,
+html[data-theme="dark"] .service-card p,
+html[data-theme="dark"] .project-copy p,
+html[data-theme="dark"] .mega-sidebar p,
+html[data-theme="dark"] .contact-info p,
+html[data-theme="dark"] .faq-item p {
+  color: #b2bdce;
+}
+html[data-theme="dark"] .project-form input,
+html[data-theme="dark"] .project-form textarea,
+html[data-theme="dark"] .project-form select,
+html[data-theme="dark"] .search-dialog input,
+html[data-theme="dark"] .mobile-search-input {
+  color: #eef2f8;
+  background: #0b111b;
+  border-color: #3b4659;
+}
+html[data-theme="dark"] .button:not(.primary) {
+  color: #eef2f8;
+  background: #172131;
+  border-color: #526078;
+}
+html[data-theme="dark"] .brand-film { background: #030712; }
+html[data-theme="dark"] .topbar { color: #b8c2d2; }
+
+.brand-film__frame { position: relative; }
+.brand-film video { position: relative; z-index: 1; }
+.brand-film__frame:has(video:not(.is-playing)) { background: #030712 url("../website/video/binux-hero-poster.svg") center / cover no-repeat; }

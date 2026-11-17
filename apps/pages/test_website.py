@@ -50,3 +50,32 @@ class BilingualWebsiteTests(SimpleTestCase):
         self.assertContains(response, 'Your message is sent only when you send that email.')
         self.assertContains(response, 'mailto:binuxtech.co@gmail.com')
         self.assertEqual(self.client.post('/en/contact/', {'brief': 'Do not store this'}).status_code, 405)
+
+    def test_brand_film_is_second_section_and_reduced_motion_has_poster(self):
+        response = self.client.get('/fa/')
+        html = response.content.decode()
+        hero = html.index('class="hero container"')
+        film = html.index('class="brand-film"')
+        marquee = html.index('class="work-marquee"')
+        self.assertLess(hero, film)
+        self.assertLess(film, marquee)
+        film_markup = html[film:marquee]
+        self.assertIn('binux-hero.mp4', film_markup)
+        self.assertIn('binux-hero-poster.svg', film_markup)
+        self.assertNotIn('autoplay', film_markup)
+
+    def test_header_contact_theme_and_about_brand_profiles(self):
+        home = self.client.get('/fa/')
+        self.assertContains(home, 'tel:+982191013254')
+        self.assertContains(home, 'class="theme-toggle"')
+        home_context = home.context[0] if home.context else {}
+        self.assertNotIn('nav_quote', home_context)
+        self.assertNotIn('nav_ai', home_context)
+        self.assertNotIn('nav_industries', home_context)
+
+        about = self.client.get('/fa/company/')
+        self.assertContains(about, 'binux.tech')
+        self.assertContains(about, 'binux-tech')
+        self.assertContains(about, 'binux_tech')
+        self.assertNotContains(about, 'علیرضا امینی')
+        self.assertNotContains(about, 'امیرعلی قاسمی')
