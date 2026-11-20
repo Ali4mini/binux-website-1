@@ -318,7 +318,7 @@ a:hover .arrow {
   color: transparent;
   width: 38px;
   height: 46px;
-  background: url(../images/logo-dark.png) no-repeat -30px center / 185px auto;
+  background: url(../images/logo.png) no-repeat center / contain;
   font-size: 0;
 }
 .desktop-nav {
@@ -2487,10 +2487,10 @@ html[lang="fa"] .service-card p {
   border: 0;
 }
 .brand-mark {
-  width: 116px;
-  height: 34px;
-  flex: 0 0 116px;
-  background: url("../images/logo-dark.svg") no-repeat center / contain;
+  width: 150px;
+  height: 50px;
+  flex: 0 0 150px;
+  background: url("../images/logo.png") no-repeat center / contain;
 }
 .mobile-blog-link { display: flex; align-items: center; gap: 10px; }
 
