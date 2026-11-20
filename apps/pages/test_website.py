@@ -79,3 +79,19 @@ class BilingualWebsiteTests(SimpleTestCase):
         self.assertContains(about, 'binux_tech')
         self.assertNotContains(about, 'علیرضا امینی')
         self.assertNotContains(about, 'امیرعلی قاسمی')
+
+
+from django.test import TestCase
+class ErpScreenshotTests(TestCase):
+    def test_meshcat_erp_uses_approved_local_screenshots_not_old_demo_media(self):
+        from django.test import Client
+        client = Client()
+        response = client.get('/fa/work/meshcat-erp/')
+        html = response.content.decode()
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('erp-screenshots/dashboard.png', html)
+        self.assertIn('erp-screenshots/dashboard.png', html)
+        self.assertNotIn('meshcat-dashboard-demo.png', html)
+        self.assertNotIn('meshcat-erp-light.mp4', html)
+        self.assertNotIn('reporting_dashboard.png', html)
+        self.assertNotIn('sales_customers.png', html)

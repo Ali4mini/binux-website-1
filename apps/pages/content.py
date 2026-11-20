@@ -64,13 +64,17 @@ SERVICES = [
 ]
 
 PROJECTS = [
-    {'slug': 'meshcat-erp', 'color': 'blue', 'image': 'website/projects/meshcat-dashboard-demo.png',
-     'video': 'website/projects/meshcat-erp-light.mp4', 'poster': 'website/projects/meshcat-erp-light.jpg',
+    {'slug': 'meshcat-erp', 'color': 'blue', 'image': 'website/projects/erp-screenshots/dashboard.png',
+     'gallery': ['website/projects/erp-screenshots/management.png',
+                 'website/projects/erp-screenshots/departments_finance.png',
+                 'website/projects/erp-screenshots/departments_operations_portfolio.png',
+                 'website/projects/erp-screenshots/settings.png'],
+     'video': '', 'poster': '',
      'en': {'title': 'Meshcat ERP', 'category': 'Business operations', 'description': 'An ERP project bringing business workflows, reporting and team operations together.',
-            'body': 'We worked on Meshcat ERP and the engineering process behind its delivery. The screenshot uses demo data and contains no client records.',
+            'body': 'We worked on Meshcat ERP and the engineering process behind its delivery. These images are real product screenshots; publication requires review of personal/client data and the sidebar logo before approval.',
             'tags': ['ERP', 'Django', 'React'], 'features': ['Business workflows', 'Management dashboards', 'Roles and permissions', 'Engineering automation']},
      'fa': {'title': 'مشکات ERP', 'category': 'عملیات کسب‌وکار', 'description': 'پروژه ERP برای کنار هم آوردن فرایندهای کسب‌وکار، گزارش‌ها و کارهای تیم.',
-            'body': 'در پروژه مشکات ERP روی توسعه نرم‌افزار سازمانی و فرایند مهندسی تحویل آن کار کردیم. تصویر این صفحه داده نمایشی دارد و اطلاعات مشتریان را نشان نمی‌دهد.',
+            'body': 'در پروژه مشکات ERP روی توسعه نرم‌افزار سازمانی و فرایند مهندسی تحویل آن کار کردیم. این تصاویر اسکرین‌شات‌های واقعی محصول‌اند و پیش از انتشار باید اطلاعات مشتریان و لوگوی نوار کناری بررسی شوند.',
             'tags': ['ERP', 'Django', 'React'], 'features': ['فرایندهای کسب‌وکار', 'داشبورد مدیریت', 'نقش‌ها و دسترسی‌ها', 'اتوماسیون مهندسی']}},
     {'slug': 'komak-moshaver', 'color': 'purple', 'image': '',
      'video': 'website/projects/komak-moshaver-light.mp4', 'poster': 'website/projects/komak-moshaver-light.jpg',
