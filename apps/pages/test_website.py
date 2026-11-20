@@ -10,6 +10,33 @@ from .content import CONTENT, SERVICES, PROJECTS, ARTICLES
 
 @override_settings(ALLOWED_HOSTS=['testserver'])
 class BilingualWebsiteTests(SimpleTestCase):
+    def test_header_keeps_phone_and_language_switcher_without_topbar_label(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                topbar = re.search(r'<div class="topbar container">(.*?)</div>', html, re.S)
+                assert topbar is not None
+                self.assertIn('class="topbar-phone"', topbar.group(1))
+                self.assertNotIn('فارسی و انگلیسی', topbar.group(1))
+                self.assertNotIn('Persian & English', topbar.group(1))
+                self.assertIn('class="language"', html)
+
+    def test_work_dropdown_links_to_every_project_without_preview_panels(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                work = re.search(r'<div class="mega-menu work-[^>]*>(.*?)</div></details>', html, re.S)
+                assert work is not None
+                work_html = work.group(1)
+                self.assertNotIn('preview-content', work_html)
+                self.assertNotIn('preview-proof', work_html)
+                self.assertNotIn('role="tab"', work_html)
+                self.assertNotIn('role="tabpanel"', work_html)
+                for project in PROJECTS:
+                    href = reverse('website:project', kwargs={'lang': lang, 'slug': project['slug']})
+                    self.assertIn(f'href="{href}"', work_html)
+                self.assertIn('class="preview-tabs" role="tablist"', html)  # Services still uses tabs.
+
     def test_home_omits_process_band_but_process_page_keeps_steps(self):
         for lang in ('fa', 'en'):
             with self.subTest(lang=lang):

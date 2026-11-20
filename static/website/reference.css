@@ -2309,3 +2309,64 @@ html[data-theme="dark"] .technology-frame .tech-tabs > button[aria-selected="tru
     transform: none;
   }
 }
+
+/* Work menu: keep the useful project index without an empty preview pane. */
+.site-header .work-links {
+  width: 355px;
+  max-width: calc(100vw - 48px);
+  padding: 11px;
+  background: #f0fdf4;
+}
+.work-link-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+  border-radius: 8px;
+  background: #fff;
+}
+.work-link-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+.work-link-list a:hover,
+.work-link-list a:focus-visible {
+  background: #f0fdf4;
+  border-color: #191c26;
+}
+.work-link-list a > .icon:first-child {
+  color: var(--blue);
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+.work-link-list .arrow {
+  width: 16px;
+  height: 16px;
+  margin-inline-start: auto;
+  flex: 0 0 16px;
+}
+html[data-theme="dark"] .site-header .work-links,
+html[data-theme="dark"] .work-link-list {
+  background: var(--surface);
+}
+html[data-theme="dark"] .work-link-list a:hover,
+html[data-theme="dark"] .work-link-list a:focus-visible {
+  background: var(--surface-raised);
+  border-color: var(--outline);
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-link-list a {
+    transition: none;
+  }
+}
