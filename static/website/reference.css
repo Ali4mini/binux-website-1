@@ -2048,16 +2048,16 @@ html[data-theme="dark"] .theme-toggle .theme-dark-icon {
 }
 .brand-mark {
   display: inline-block;
-  width: 116px;
-  height: 34px;
-  flex: 0 0 116px;
-  background: url("../images/logo-dark.svg") no-repeat center / contain;
+  width: 150px;
+  height: 50px;
+  flex: 0 0 150px;
+  background: url("../images/logo.png") no-repeat center / contain;
 }
 @media (max-width: 760px) {
   .brand-mark {
-    width: 100px;
-    height: 30px;
-    flex-basis: 100px;
+    width: 120px;
+    height: 40px;
+    flex-basis: 120px;
   }
 }
 html[data-theme="dark"] .nav-wrap,
@@ -2066,7 +2066,7 @@ html[data-theme="dark"] .site-header.scrolled .nav-wrap {
   box-shadow: none;
 }
 html[data-theme="dark"] .brand-mark {
-  background-image: url("../images/logo-light.svg");
+  background-image: url("../images/logo.png");
 }
 
 /* Technology showcase: a compact blue index and an editorial tool wall. */
