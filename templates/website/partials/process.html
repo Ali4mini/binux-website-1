@@ -1,0 +1,1 @@
+<div class="process-grid">{% for step in c.steps %}<article class="process-step reveal"><span class="step-number" aria-hidden="true">{{ forloop.counter|stringformat:'02d' }}</span><h3>{{ step.0 }}</h3><p>{{ step.1 }}</p></article>{% endfor %}</div>

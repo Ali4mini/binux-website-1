@@ -1,0 +1,14 @@
+# Asset and content provenance
+
+- `static/images/logo.png`: original Binux logo artwork inherited from the authoritative repository.
+- `static/images/logo-dark.png`: derived from `logo.png`; retains the transparent background and gradient B, recolors the `inux` wordmark to #191c26. Used by the website header.
+- `static/website/projects/meshcat-dashboard-demo.png`: copied unchanged from `/home/dev/new-portfolio/dist/assets/projects/meshcat-dashboard-demo.png`. Its source is recorded in that project's ASSETS.md. `/home/dev/binux-management/01-assets/proof-inventory.md` explicitly permits these synthetic demo screenshots. UI labels it as demo data; it does not show customer records.
+- Komak Moshaver and automation previews: original HTML/CSS illustrative views, explicitly labeled as illustrative. They are not claimed to be product screenshots.
+- `static/website/fonts/panamera-{400,500,700,900}.woff2`: exact Panamera webfont files served by the inspected reference, under `https://solguruz.com/_next/static/media/`. Original filenames recorded in `/tmp/binux-fidelity/reference-fonts.css`. Panamera is open source under SIL OFL; upstream `noirblancrouge/Panamera/OFL.txt` included as `Panamera-OFL.txt`.
+- `static/website/fonts/inter-latin.woff2`: the exact reference's Inter Latin variable webfont, served as `83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2`. Upstream `rsms/inter/LICENSE.txt` included as `Inter-OFL.txt`.
+- `static/website/technology/*.svg`: local Simple Icons brand glyphs, fetched from the official `simple-icons/simple-icons` repository. The supplied CC0 license is included. Glyph fill colors follow their public brand palettes.
+- `static/website/icons/*.svg`: generic Tabler outline icons, fetched from `tabler/tabler-icons/main/icons/outline/`. MIT license included; these replace approximate category icons in the tab previews.
+- `static/website/fonts/vazirmatn.woff2`: existing Binux design asset from `/home/dev/binux-management/01-assets/design/mockup-v1/fonts/`; SIL OFL license from rastikerdar/vazirmatn included as Vazirmatn-OFL.txt.
+- Remaining icons and favicon: original small inline SVG paths. Icons and logos are self-hosted without a runtime external dependency.
+- Public business facts and email: Binux identity, offer and proof-inventory documents under `/home/dev/binux-management`, verified on disk this session. No personal or financial notes copied. No client names, private records, pricing, commercial metrics or unverified testimonials added.
+- Visual reference: https://solguruz.com/ (inspected 2026-10-28). Its code, tracking, images, customer logos, testimonial media and commercial claims are not bundled. Reference captures are inspection evidence only and are not shipping assets.

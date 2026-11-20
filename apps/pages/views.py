@@ -7,13 +7,13 @@ from django.urls import reverse
 from django.views.generic import TemplateView
 
 from .models import Project
+from .content import CONTACT_EMAIL
 from .services import SERVICES, get_service, related_services
 
 
 SITE_NAME = "بینوکس | Binux"
 SITE_LOGO_PATH = "images/logo.png"
 CONTACT_PHONE = "+989192199086"
-CONTACT_EMAIL = "support@binux.ir"
 SOCIAL_PROFILES = [
     "https://t.me/binux_studio",
     "https://instagram.com/binux_studio",
@@ -1309,7 +1309,14 @@ class ArticlesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["articles"] = ARTICLES
+        categories = sorted({article["category"] for article in ARTICLES})
+        active_category = self.request.GET.get("category", "")
+        context["categories"] = categories
+        context["active_category"] = active_category if active_category in categories else ""
+        context["articles"] = [
+            article for article in ARTICLES
+            if not context["active_category"] or article["category"] == context["active_category"]
+        ]
         context["seo_title"] = "مقاله‌های تکنولوژی، سئو و توسعه نرم‌افزار | وبلاگ بینوکس"
         context["seo_description"] = "مقالات کاربردی بینوکس درباره سئو، طراحی سایت، سرعت وب، CRM، ERP، Django، Python، API و زیرساخت نرم‌افزار."
         context["seo_keywords"] = ", ".join(article["keywords"] for article in ARTICLES)
@@ -1350,6 +1357,9 @@ class ArticlesView(TemplateView):
             ensure_ascii=False,
         )
         return context
+
+
+BlogView = ArticlesView
 
 
 class ArticleDetailView(TemplateView):
@@ -1439,6 +1449,7 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["email"] = CONTACT_EMAIL
         context["seo_title"] = "درباره بینوکس | تیم توسعه نرم‌افزار و راهکارهای دیجیتال"
         context["seo_description"] = "آشنایی با تیم فنی بینوکس و راهکارهای توسعه نرم‌افزار، طراحی سایت، CRM، ERP و سامانه‌های سازمانی."
         context["seo_keywords"] = "درباره بینوکس, تیم توسعه نرم افزار, طراحی سایت, CRM, ERP"
