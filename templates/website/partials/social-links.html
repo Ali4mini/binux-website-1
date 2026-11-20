@@ -4,7 +4,7 @@
   <div class="footer-social-links">
     {% for platform, handle, url, icon in c.social_accounts %}
     <a href="{{ url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ platform }} — {{ handle }}">
-      <span class="footer-social-icon"><img src="{% static 'website/social/' %}{{ icon }}.svg" alt="" width="25" height="25" loading="lazy"></span>
+      <span class="footer-social-icon"><img src="{% static 'website/social/' %}{{ icon }}.svg" alt="" width="25" height="25"></span>
       <span class="footer-social-name">{{ platform }}<small dir="ltr">{{ handle }}</small></span>
       <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
     </a>
