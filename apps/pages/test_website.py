@@ -37,6 +37,22 @@ class BilingualWebsiteTests(SimpleTestCase):
                     self.assertIn(f'href="{href}"', work_html)
                 self.assertIn('class="preview-tabs" role="tablist"', html)  # Services still uses tabs.
 
+    def test_home_service_showcase_uses_six_original_local_illustrations(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                self.assertEqual(html.count('class="service-showcase-card"'), len(SERVICES))
+                for service in SERVICES:
+                    slug = service['slug']
+                    href = reverse('website:service', kwargs={'lang': lang, 'slug': slug})
+                    self.assertIn(f'href="{href}"', html)
+                    self.assertIn(f'/static/website/service-art/{slug}.svg', html)
+                    self.assertIsNotNone(finders.find(f'website/service-art/{slug}.svg'))
+                listing = cast(HttpResponse, self.client.get(f'/{lang}/services/')).content.decode()
+                self.assertIn('class="service-index"', listing)
+                self.assertIn('id="service-consultation-form"', listing)
+
+
     def test_home_omits_process_band_but_process_page_keeps_steps(self):
         for lang in ('fa', 'en'):
             with self.subTest(lang=lang):
@@ -105,7 +121,8 @@ class BilingualWebsiteTests(SimpleTestCase):
         response = self.client.get('/sitemap.xml')
         root = ElementTree.fromstring(response.content)
         locations = [node.text for node in root.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
-        self.assertEqual(len(locations), 38)
+        # The blog landing route is additional to the bilingual website routes.
+        self.assertEqual(len(locations), 39)
         self.assertEqual(len(locations), len(set(locations)))
         for location in locations:
             self.assertEqual(self.client.get(location.removeprefix('https://binux.tech')).status_code, 200)
@@ -136,7 +153,7 @@ class BilingualWebsiteTests(SimpleTestCase):
     def test_header_contact_theme_and_about_brand_profiles(self):
         home = self.client.get('/fa/')
         self.assertContains(home, 'tel:+982191013254')
-        self.assertContains(home, 'class="theme-toggle"')
+        self.assertContains(home, 'class="icon-button theme-toggle"')
         home_context = home.context[0] if home.context else {}
         self.assertNotIn('nav_quote', home_context)
         self.assertNotIn('nav_ai', home_context)

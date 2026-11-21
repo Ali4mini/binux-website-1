@@ -165,6 +165,31 @@
     });
   });
 
+  const showcase = $(".service-showcase");
+  if (showcase) {
+    const touch = matchMedia("(hover: none)");
+    const cards = $$(".service-showcase-card", showcase);
+    const syncDisclosure = () => cards.forEach((card) => {
+      const button = $(".service-showcase-toggle", card);
+      const copy = $(".service-showcase-copy", card);
+      const open = card.classList.contains("is-open");
+      button.setAttribute("aria-expanded", String(open));
+      copy.inert = touch.matches && !reduced.matches && !open;
+    });
+    cards.forEach((card) => {
+      $(".service-showcase-toggle", card).addEventListener("click", () => {
+        const open = card.classList.contains("is-open");
+        cards.forEach((item) => item.classList.remove("is-open"));
+        card.classList.toggle("is-open", !open);
+        syncDisclosure();
+      });
+    });
+    document.documentElement.classList.add("showcase-js");
+    touch.addEventListener("change", syncDisclosure);
+    reduced.addEventListener("change", syncDisclosure);
+    syncDisclosure();
+  }
+
   const menuButton = $(".menu-toggle");
   const mobileNav = $("#mobile-nav");
   const closeMobile = () => {
