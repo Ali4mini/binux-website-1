@@ -2466,8 +2466,12 @@ html[data-theme="dark"] .work-link-list a:focus-visible {
 }
 .service-showcase-copy p {
   margin: 12px 0 14px;
+  color: inherit;
   font-size: 16px;
   line-height: 1.65;
+}
+html[data-theme="dark"] .service-showcase-copy p {
+  color: inherit;
 }
 .service-showcase-copy a {
   display: inline-flex;
