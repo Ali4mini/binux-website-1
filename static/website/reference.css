@@ -2330,7 +2330,7 @@ html[data-theme="dark"] .technology-frame .tech-tabs > button[aria-selected="tru
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 52px;
+  min-height: 64px;
   padding: 10px 12px;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -2338,6 +2338,17 @@ html[data-theme="dark"] .technology-frame .tech-tabs > button[aria-selected="tru
   font-weight: 600;
   line-height: 1.4;
   transition: background-color 150ms ease, border-color 150ms ease;
+}
+.work-link-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.work-link-label small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
 }
 .work-link-list a:hover,
 .work-link-list a:focus-visible {
@@ -2380,13 +2391,15 @@ html[data-theme="dark"] .work-link-list a:focus-visible {
 .service-showcase-card {
   --service-expanded: 0;
   --service-circle-fill: #d6e1ff;
+  --service-card-fill: var(--surface);
   --service-copy-color: var(--ink);
   --service-content-visibility: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 410px;
+  min-height: 410px;
+  height: auto;
   min-width: 0;
   padding: 24px;
   overflow: hidden;
@@ -2394,7 +2407,8 @@ html[data-theme="dark"] .work-link-list a:focus-visible {
   border: 1px solid #191c26;
   border-radius: 12px;
   box-shadow: 4px 4px 0 #191c26;
-  background: var(--surface);
+  background: var(--service-card-fill);
+  transition: background-color 260ms ease 180ms;
 }
 .service-showcase-circle {
   position: absolute;
@@ -2406,7 +2420,7 @@ html[data-theme="dark"] .work-link-list a:focus-visible {
   border: 1px solid #191c26;
   border-radius: 50%;
   background: var(--service-circle-fill);
-  transform: translateX(-50%) scale(calc(1 + 3.2 * var(--service-expanded)));
+  transform: translateX(-50%) scale(calc(1 + 3.8 * var(--service-expanded)));
   transition: transform 470ms cubic-bezier(.2,.8,.2,1), background-color 390ms ease;
 }
 .service-showcase-art {
@@ -2439,9 +2453,8 @@ html[data-theme="dark"] .work-link-list a:focus-visible {
   font: 700 24px/1.45 var(--display);
 }
 .service-showcase-heading a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline;
+  overflow-wrap: anywhere;
   color: inherit;
   text-decoration: none;
 }
@@ -2455,8 +2468,13 @@ html[data-theme="dark"] .work-link-list a:focus-visible {
   height: 19px;
   flex: 0 0 19px;
 }
+.service-showcase-heading .arrow {
+  display: inline-block;
+  margin-inline-start: 6px;
+  vertical-align: middle;
+}
 .service-showcase-copy {
-  max-height: calc(180px * var(--service-expanded));
+  max-height: calc(1000px * var(--service-expanded));
   overflow: hidden;
   opacity: var(--service-expanded);
   visibility: var(--service-content-visibility);
@@ -2480,6 +2498,7 @@ html[data-theme="dark"] .service-showcase-copy p {
   min-height: 34px;
   color: inherit;
   font-weight: 700;
+  line-height: 1.5;
   text-underline-offset: 5px;
 }
 .service-showcase-card:is(:hover, :focus-within, .is-open) .service-showcase-heading a:focus-visible,
@@ -2487,6 +2506,8 @@ html[data-theme="dark"] .service-showcase-copy p {
   outline-color: #fff;
 }
 .service-showcase-toggle {
+  position: relative;
+  z-index: 2;
   display: none;
   place-items: center;
   flex: 0 0 42px;
@@ -2509,6 +2530,7 @@ html[data-theme="dark"] .service-showcase-copy p {
   .service-showcase-card:is(:hover, :focus-within) {
     --service-expanded: 1;
     --service-circle-fill: #3655ef;
+    --service-card-fill: #3655ef;
     --service-copy-color: #fff;
     --service-content-visibility: visible;
   }
@@ -2518,6 +2540,7 @@ html[data-theme="dark"] .service-showcase-copy p {
   .service-showcase-card.is-open {
     --service-expanded: 1;
     --service-circle-fill: #3655ef;
+    --service-card-fill: #3655ef;
     --service-copy-color: #fff;
     --service-content-visibility: visible;
   }
@@ -2540,7 +2563,7 @@ html[data-theme="dark"] .service-showcase-card {
     gap: 17px;
   }
   .service-showcase-card {
-    height: 380px;
+    min-height: 380px;
     padding: 22px;
   }
   .service-showcase-circle {
@@ -2557,15 +2580,22 @@ html[data-theme="dark"] .service-showcase-card {
     font-size: 24px;
   }
 }
+@media (max-width: 370px) {
+  .service-showcase-card {
+    min-height: 520px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .service-showcase-card,
   html:not(.showcase-js) .service-showcase-card,
   .showcase-js .service-showcase-card {
     --service-expanded: 1;
     --service-circle-fill: #3655ef;
+    --service-card-fill: #3655ef;
     --service-copy-color: #fff;
     --service-content-visibility: visible;
   }
+  .service-showcase-card,
   .service-showcase-card .service-showcase-circle,
   .service-showcase-card .service-showcase-art,
   .service-showcase-card .service-showcase-content,

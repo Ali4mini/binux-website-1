@@ -35,6 +35,7 @@ class BilingualWebsiteTests(SimpleTestCase):
                 for project in PROJECTS:
                     href = reverse('website:project', kwargs={'lang': lang, 'slug': project['slug']})
                     self.assertIn(f'href="{href}"', work_html)
+                    self.assertIn(project[lang]['title'], work_html)
                 self.assertIn('class="preview-tabs" role="tablist"', html)  # Services still uses tabs.
 
     def test_home_service_showcase_uses_six_original_local_illustrations(self):
@@ -121,8 +122,7 @@ class BilingualWebsiteTests(SimpleTestCase):
         response = self.client.get('/sitemap.xml')
         root = ElementTree.fromstring(response.content)
         locations = [node.text for node in root.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
-        # The blog landing route is additional to the bilingual website routes.
-        self.assertEqual(len(locations), 39)
+        self.assertEqual(len(locations), 38)
         self.assertEqual(len(locations), len(set(locations)))
         for location in locations:
             self.assertEqual(self.client.get(location.removeprefix('https://binux.tech')).status_code, 200)
@@ -153,7 +153,7 @@ class BilingualWebsiteTests(SimpleTestCase):
     def test_header_contact_theme_and_about_brand_profiles(self):
         home = self.client.get('/fa/')
         self.assertContains(home, 'tel:+982191013254')
-        self.assertContains(home, 'class="icon-button theme-toggle"')
+        self.assertContains(home, 'class="theme-toggle"')
         home_context = home.context[0] if home.context else {}
         self.assertNotIn('nav_quote', home_context)
         self.assertNotIn('nav_ai', home_context)
