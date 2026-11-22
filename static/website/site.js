@@ -165,79 +165,23 @@
     });
   });
 
-  const showcase = $(".service-showcase");
+  const showcase = $("[data-service-showcase]");
   if (showcase) {
-    const touch = matchMedia("(hover: none)");
-    const cards = $$(".service-showcase-card", showcase);
-    let keyboardNavigation = false;
-    const syncDisclosure = () => cards.forEach((card) => {
-      const button = $(".service-showcase-toggle", card);
-      const copy = $(".service-showcase-copy", card);
-      const open = card.classList.contains("is-open");
-      button.setAttribute("aria-expanded", String(open));
-      copy.inert = touch.matches && !reduced.matches && !open;
-    });
-    cards.forEach((card) => {
-      $(".service-showcase-toggle", card).addEventListener("click", () => {
-        const open = card.classList.contains("is-open");
-        cards.forEach((item) => item.classList.remove("is-open"));
-        card.classList.toggle("is-open", !open);
-        syncDisclosure();
+    const choices = $$('[data-service-choice]', showcase);
+    const panels = $$('[data-service-panel]', showcase);
+    choices.forEach((choice) => {
+      choice.addEventListener("click", (event) => {
+        event.preventDefault();
+        const selected = choice.dataset.serviceChoice;
+        choices.forEach((item) => {
+          if (item === choice) item.setAttribute("aria-current", "true");
+          else item.removeAttribute("aria-current");
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.servicePanel !== selected;
+        });
       });
     });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Tab") keyboardNavigation = true;
-    }, true);
-    document.addEventListener("pointerdown", () => {
-      keyboardNavigation = false;
-    }, true);
-    showcase.addEventListener("focusin", (event) => {
-      if (!touch.matches || reduced.matches || !keyboardNavigation) return;
-      const card = event.target.closest(".service-showcase-card");
-      if (!card) return;
-      cards.forEach((item) => item.classList.remove("is-open"));
-      card.classList.add("is-open");
-      syncDisclosure();
-    });
-    showcase.addEventListener("focusout", (event) => {
-      const card = event.target.closest(".service-showcase-card");
-      if (!card) return;
-      setTimeout(() => {
-        if (!card.contains(document.activeElement)) {
-          card.classList.remove("is-open");
-          syncDisclosure();
-        }
-      }, 0);
-    });
-    document.documentElement.classList.add("showcase-js");
-    touch.addEventListener("change", syncDisclosure);
-    reduced.addEventListener("change", syncDisclosure);
-    syncDisclosure();
-    const reserveCardSpace = () => {
-      const base = matchMedia("(max-width: 370px)").matches ? 520
-        : matchMedia("(max-width: 760px)").matches ? 380 : 410;
-      cards.forEach((card) => {
-        const style = getComputedStyle(card);
-        const needed = Math.ceil(
-          $(".service-showcase-heading", card).scrollHeight +
-          $(".service-showcase-copy", card).scrollHeight +
-          parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) + 2,
-        );
-        const height = `${Math.max(base, needed)}px`;
-        if (card.style.minHeight !== height) card.style.minHeight = height;
-      });
-    };
-    reserveCardSpace();
-    addEventListener("resize", reserveCardSpace, { passive: true });
-    document.fonts.ready.then(reserveCardSpace);
-    if ("ResizeObserver" in window) {
-      const measure = new ResizeObserver(() => requestAnimationFrame(reserveCardSpace));
-      cards.forEach((card) => {
-        measure.observe($(".service-showcase-heading", card));
-        measure.observe($(".service-showcase-copy p", card));
-        measure.observe($(".service-showcase-copy a", card));
-      });
-    }
   }
 
   const menuButton = $(".menu-toggle");

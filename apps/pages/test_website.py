@@ -38,17 +38,26 @@ class BilingualWebsiteTests(SimpleTestCase):
                     self.assertIn(project[lang]['title'], work_html)
                 self.assertIn('class="preview-tabs" role="tablist"', html)  # Services still uses tabs.
 
-    def test_home_service_showcase_uses_six_original_local_illustrations(self):
+    def test_home_service_showcase_uses_six_local_icons_and_sits_after_marquee(self):
         for lang in ('fa', 'en'):
             with self.subTest(lang=lang):
                 html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
-                self.assertEqual(html.count('class="service-showcase-card"'), len(SERVICES))
+                self.assertEqual(html.count('class="service-showcase-panel"'), len(SERVICES))
+                marquee_pos = html.index('class="work-marquee"')
+                services_pos = html.index('class="section container service-section"')
+                proof_pos = html.index('class="dark-section"')
+                self.assertLess(marquee_pos, services_pos)
+                self.assertLess(services_pos, proof_pos)
+                self.assertEqual(html.count('class="service-showcase-choice"'), len(SERVICES))
                 for service in SERVICES:
                     slug = service['slug']
                     href = reverse('website:service', kwargs={'lang': lang, 'slug': slug})
                     self.assertIn(f'href="{href}"', html)
+                    self.assertIn(f'data-service-choice="{slug}"', html)
+                    self.assertIn(f'data-service-panel="{slug}"', html)
                     self.assertIn(f'/static/website/service-art/{slug}.svg', html)
                     self.assertIsNotNone(finders.find(f'website/service-art/{slug}.svg'))
+                self.assertIn('aria-current="true"', html)
                 listing = cast(HttpResponse, self.client.get(f'/{lang}/services/')).content.decode()
                 self.assertIn('class="service-index"', listing)
                 self.assertIn('id="service-consultation-form"', listing)
