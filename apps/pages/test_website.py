@@ -48,6 +48,7 @@ class BilingualWebsiteTests(SimpleTestCase):
                 proof_pos = html.index('class="dark-section"')
                 self.assertLess(marquee_pos, services_pos)
                 self.assertLess(services_pos, proof_pos)
+                self.assertEqual(html.count('class="service-showcase-item'), len(SERVICES))
                 self.assertEqual(html.count('class="service-showcase-choice"'), len(SERVICES))
                 for service in SERVICES:
                     slug = service['slug']

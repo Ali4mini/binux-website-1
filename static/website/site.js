@@ -168,18 +168,25 @@
   const showcase = $("[data-service-showcase]");
   if (showcase) {
     const choices = $$('[data-service-choice]', showcase);
+    const items = $$('[data-service-item]', showcase);
     const panels = $$('[data-service-panel]', showcase);
     choices.forEach((choice) => {
       choice.addEventListener("click", (event) => {
         event.preventDefault();
         const selected = choice.dataset.serviceChoice;
+        items.forEach((item) => {
+          item.classList.toggle("is-active", item.dataset.serviceItem === selected);
+        });
         choices.forEach((item) => {
-          if (item === choice) item.setAttribute("aria-current", "true");
+          if (item.dataset.serviceChoice === selected) item.setAttribute("aria-current", "true");
           else item.removeAttribute("aria-current");
         });
         panels.forEach((panel) => {
           panel.hidden = panel.dataset.servicePanel !== selected;
         });
+        if (document.activeElement === choice) {
+          $(`[data-service-panel="${selected}"] a`, showcase)?.focus();
+        }
       });
     });
   }
