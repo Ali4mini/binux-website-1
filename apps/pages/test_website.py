@@ -1,4 +1,8 @@
 from xml.etree import ElementTree
+import re
+from typing import cast
+from django.http import HttpResponse
+from django.contrib.staticfiles import finders
 from django.test import SimpleTestCase, override_settings
 from django.urls import reverse
 from .content import CONTENT, SERVICES, PROJECTS, ARTICLES
@@ -6,6 +10,88 @@ from .content import CONTENT, SERVICES, PROJECTS, ARTICLES
 
 @override_settings(ALLOWED_HOSTS=['testserver'])
 class BilingualWebsiteTests(SimpleTestCase):
+    def test_header_keeps_phone_and_language_switcher_without_topbar_label(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                topbar = re.search(r'<div class="topbar container">(.*?)</div>', html, re.S)
+                assert topbar is not None
+                self.assertIn('class="topbar-phone"', topbar.group(1))
+                self.assertNotIn('فارسی و انگلیسی', topbar.group(1))
+                self.assertNotIn('Persian & English', topbar.group(1))
+                self.assertIn('class="language"', html)
+
+    def test_work_dropdown_links_to_every_project_without_preview_panels(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                work = re.search(r'<div class="mega-menu work-[^>]*>(.*?)</div></details>', html, re.S)
+                assert work is not None
+                work_html = work.group(1)
+                self.assertNotIn('preview-content', work_html)
+                self.assertNotIn('preview-proof', work_html)
+                self.assertNotIn('role="tab"', work_html)
+                self.assertNotIn('role="tabpanel"', work_html)
+                for project in PROJECTS:
+                    href = reverse('website:project', kwargs={'lang': lang, 'slug': project['slug']})
+                    self.assertIn(f'href="{href}"', work_html)
+                    self.assertIn(project[lang]['title'], work_html)
+                self.assertIn('class="preview-tabs" role="tablist"', html)  # Services still uses tabs.
+
+    def test_home_service_showcase_uses_six_original_local_illustrations(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                self.assertEqual(html.count('class="service-showcase-card"'), len(SERVICES))
+                for service in SERVICES:
+                    slug = service['slug']
+                    href = reverse('website:service', kwargs={'lang': lang, 'slug': slug})
+                    self.assertIn(f'href="{href}"', html)
+                    self.assertIn(f'/static/website/service-art/{slug}.svg', html)
+                    self.assertIsNotNone(finders.find(f'website/service-art/{slug}.svg'))
+                listing = cast(HttpResponse, self.client.get(f'/{lang}/services/')).content.decode()
+                self.assertIn('class="service-index"', listing)
+                self.assertIn('id="service-consultation-form"', listing)
+
+
+    def test_home_omits_process_band_but_process_page_keeps_steps(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                home = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                process_url = reverse('website:process', kwargs={'lang': lang})
+                process = cast(HttpResponse, self.client.get(process_url)).content.decode()
+                self.assertNotIn('class="process-section section"', home)
+                self.assertNotIn('class="process-grid"', home)
+                self.assertIn('class="process-grid"', process)
+
+    def test_social_destinations_are_in_shared_footer_with_local_icons(self):
+        for lang in ('fa', 'en'):
+            for page in ('', 'company/'):
+                with self.subTest(lang=lang, page=page):
+                    html = cast(HttpResponse, self.client.get(f'/{lang}/{page}')).content.decode()
+                    main, footer = html.split('</main>', 1)
+                    self.assertNotIn('class="related-services"><a href="https://instagram.com/', main)
+                    social = footer.split('class="footer-social"', 1)[1]
+                    self.assertEqual(social.split('class="footer-bottom"', 1)[0].count('class="footer-social-icon"'), 4)
+                    for icon in ('instagram', 'reddit', 'x', 'linkedin'):
+                        self.assertIn(f'/static/website/social/{icon}.svg', social)
+                        self.assertIsNotNone(finders.find(f'website/social/{icon}.svg'))
+
+    def test_contact_buttons_dial_the_phone_shown_in_the_topbar(self):
+        for lang in ('fa', 'en'):
+            with self.subTest(lang=lang):
+                html = cast(HttpResponse, self.client.get(f'/{lang}/')).content.decode()
+                phone = re.search(r'class="topbar-phone" href="(tel:[^"]+)"', html)
+                assert phone is not None
+                href = phone.group(1)
+                for selector in ('button nav-contact', 'button primary mobile-contact-action'):
+                    button = re.search(r'class="' + selector + r'" href="([^"]+)"', html)
+                    assert button is not None
+                    self.assertEqual(button.group(1), href)
+                quick_contact = re.search(r'class="mobile-quick-contact".*?href="mailto:[^"]+".*?<a class="button" href="([^"]+)"', html, re.S)
+                assert quick_contact is not None
+                self.assertEqual(quick_contact.group(1), href)
+
     def test_every_bilingual_page_and_equivalent_language_link(self):
         for lang in CONTENT:
             other = 'fa' if lang == 'en' else 'en'

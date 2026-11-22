@@ -1,0 +1,19 @@
+{% load static %}
+<div class="service-showcase" aria-label="{{ c.services }}">
+  {% for s in services %}
+  <article class="service-showcase-card" id="service-{{ s.slug }}">
+    <span class="service-showcase-circle" aria-hidden="true"></span>
+    <img class="service-showcase-art" src="{% static 'website/service-art/' %}{{ s.slug }}.svg" alt="" width="180" height="180" loading="lazy">
+    <div class="service-showcase-content">
+      <div class="service-showcase-heading">
+        <h3><a href="{% url 'website:service' lang=lang slug=s.slug %}">{{ s.title }} <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></h3>
+        <button type="button" class="service-showcase-toggle" aria-expanded="false" aria-controls="service-copy-{{ s.slug }}" aria-label="{{ c.learn }}: {{ s.title }}"><span aria-hidden="true">+</span></button>
+      </div>
+      <div class="service-showcase-copy" id="service-copy-{{ s.slug }}">
+        <p>{{ s.description }}</p>
+        <a href="{% url 'website:service' lang=lang slug=s.slug %}">{{ c.learn }} <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
