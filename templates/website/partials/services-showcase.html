@@ -2,17 +2,15 @@
 <div class="service-showcase" data-service-showcase>
   <div class="service-showcase-choices" role="group" aria-label="{{ c.services_heading }}">
     {% for s in services %}
-    <a class="service-showcase-choice" href="{% url 'website:service' lang=lang slug=s.slug %}" data-service-choice="{{ s.slug }}" {% if forloop.first %}aria-current="true"{% endif %} aria-controls="service-panel-{{ s.slug }}">
-      <span class="service-showcase-icon"><img src="{% static 'website/service-art/' %}{{ s.slug }}.svg" alt="" width="112" height="112" loading="lazy"></span>
-      <span class="service-showcase-title">{{ s.title }}</span>
-    </a>
-    {% endfor %}
-  </div>
-  <div class="service-showcase-panels" aria-live="polite">
-    {% for s in services %}
-    <article class="service-showcase-panel" id="service-panel-{{ s.slug }}" data-service-panel="{{ s.slug }}" {% if not forloop.first %}hidden{% endif %}>
-      <div><h3>{{ s.title }}</h3><p>{{ s.description }}</p></div>
-      <a class="button" href="{% url 'website:service' lang=lang slug=s.slug %}">{{ c.learn }} <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <article class="service-showcase-item{% if forloop.first %} is-active{% endif %}" data-service-item="{{ s.slug }}">
+      <a class="service-showcase-choice" href="{% url 'website:service' lang=lang slug=s.slug %}" data-service-choice="{{ s.slug }}" {% if forloop.first %}aria-current="true"{% endif %} aria-controls="service-panel-{{ s.slug }}">
+        <span class="service-showcase-icon"><img src="{% static 'website/service-art/' %}{{ s.slug }}.svg" alt="" width="112" height="112" loading="lazy"></span>
+        <span class="sr-only">{{ s.title }}</span>
+      </a>
+      <div class="service-showcase-panel" id="service-panel-{{ s.slug }}" data-service-panel="{{ s.slug }}" {% if not forloop.first %}hidden{% endif %}>
+        <div class="service-showcase-panel-art"><img src="{% static 'website/service-art/' %}{{ s.slug }}.svg" alt="" width="112" height="112" loading="lazy"></div>
+        <div class="service-showcase-panel-copy"><h3>{{ s.title }}</h3><p>{{ s.description }}</p><a href="{% url 'website:service' lang=lang slug=s.slug %}">{{ c.learn }} <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+      </div>
     </article>
     {% endfor %}
   </div>

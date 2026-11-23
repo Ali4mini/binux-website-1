@@ -19,20 +19,32 @@ class SuppliedBrandLogoTests(SimpleTestCase):
                 self.assertGreaterEqual(header.count('class="brand-mark"'), 2)
                 self.assertIn('class="brand-mark"', footer)
                 self.assertIn('/static/website/favicon.png', html)
+                self.assertIn('class="icon theme-light-icon" viewBox="0 0 24 24"', html)
+                self.assertIn('class="icon theme-dark-icon" viewBox="0 0 24 24"', html)
                 self.assertIn('property="og:image" content="https://binux.tech/static/images/logo.png"', html)
                 self.assertIn('name="twitter:image" content="https://binux.tech/static/images/logo.png"', html)
                 self.assertNotIn('/static/website/favicon.svg', html)
                 self.assertNotIn('aria-hidden="true">B<span', footer)
 
-    def test_shared_css_points_to_same_uploaded_image_in_light_and_dark(self):
+    def test_shared_css_uses_transparent_theme_appropriate_logo_variants(self):
         css = Path(cast(str, finders.find("website/reference.css"))).read_text()
-        self.assertIn('../images/logo.png', css)
-        self.assertNotIn('../images/logo-light.svg', css)
-        self.assertNotIn('../images/logo-dark.svg', css)
-        for filename in ("images/logo.png", "website/favicon.png"):
+        self.assertIn('../images/logo-light.png', css)
+        self.assertIn('../images/logo-dark.png', css)
+        self.assertIn('.site-footer .brand-mark', css)
+        self.assertNotIn('../images/logo.png', css)
+        for filename in (
+            "images/logo.png",
+            "images/logo-light.png",
+            "images/logo-dark.png",
+            "website/favicon.png",
+        ):
             path = Path(cast(str, finders.find(filename)))
             self.assertTrue(path.is_file())
-            self.assertEqual(path.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
+            image = path.read_bytes()
+            self.assertEqual(image[:8], b"\x89PNG\r\n\x1a\n")
+        for filename in ("images/logo-light.png", "images/logo-dark.png"):
+            image = Path(cast(str, finders.find(filename))).read_bytes()
+            self.assertEqual(image[25], 6, f"{filename} must include an alpha channel")
 
     def test_legacy_logo_and_metadata_use_same_asset(self):
         request = RequestFactory().get("/fa/")
